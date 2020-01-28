@@ -29,11 +29,8 @@ export default class InputList extends Component{
         "Show no hiding comment",
         "Show all comment",
       ],
-      thumb:0,
-      love:0,
-      angry:0,
-      sad:0,
-      smile:0,
+      insideComment:'',
+      netComment:"none",
     }
       this.valChange=this.valChange.bind(this);
       this.addToList=this.addToList.bind(this);
@@ -45,11 +42,33 @@ export default class InputList extends Component{
       this.addSad=this.addSad.bind(this);
       this.addAngry=this.addAngry.bind(this);
       this.addSmile=this.addSmile.bind(this);
+      this.insideCommentChange=this.insideCommentChange.bind(this);
+      this.showNet=this.showNet.bind(this);
+      this.hindNetComment=this.hindNetComment.bind(this);
   }
 
   render(){
     return (
       <Fragment>
+      <div style={{display:this.state.netComment,width:"400px",position:"absolute",top:"50%",left:"50%", transform: "translate(-50%, -50%)"}}>
+      <textarea 
+          placeholder="Enter your comment"
+          style={{marginTop:"10px",width:"100%",backgroundColor:"#eee"}}
+          value={this.state.insideComment}  
+          cols = "138" rows="19" 
+          onChange = {this.insideCommentChange}>
+          </textarea>
+          <button 
+            style={{width:"50%",float:"left",backgroundColor:"#06f",color:"white"}}
+            onClick={this.hindNetComment}
+          >Cancel
+          </button>
+          <button 
+            style={{width:"50%",float:"right",backgroundColor:"#06f",color:"white"}}
+          >Submit
+          </button>
+      </div>
+
       <div style={{width:"100%",height:"100px",backgroundColor:"lightblue",marginBottom:"15px"}}>
       <img src="../src/dolphin-icon.jpg" alt="" style={{width:"10%"}}></img>
       </div>
@@ -118,43 +137,44 @@ export default class InputList extends Component{
         
         <div style = {{width:"70%",margin:"auto"}}>
           {this.state.commentList.map((item,index)=>{
-            return (<div 
-              key = {index} 
+            return (
+              <div 
+              key = {new Date().getTime()+index} 
               style = {{fontSize:"14px",margin:"10px 0px",boxShadow:"2px 2px 4px 2px #eee, -2px 2px 2px 2px #eee ",}}>
               
-              <p style={{backgroundColor:"lightgray"}}>{item.split("&")[0]}</p>
+              <p style={{backgroundColor:"lightgray"}}>{item.timeDate+" "+item.timeLocal}</p>
               {/* <img 
                 src = "../src/love.jpg" 
                 onClick = {this.delComment.bind(this,index)} 
                 style = {{width:"30px",height:"30px",marginRight:"5px"}}
               > */}
-              <p style={{fontSize:"16px",color:"blue"}}>{item.split("&")[1]}</p>
+              <p style={{fontSize:"16px",color:"blue"}}>{item.defaultPerson}</p>
               
-              <p style={{backgroundColor:"#eee"}}>{item.split("&").splice(2,item.length)}</p>
+              <p style={{backgroundColor:"#eee"}}>{item.commentText}</p>
               <div>
               <img 
                 src = "../src/thumb.jpg" 
-                onClick = {this.addThumb} 
+                onClick = {this.addThumb.bind(this,index)} 
                 style = {{width:"30px",height:"30px",marginRight:"5px"}}
               />
               <img 
                 src = "../src/love.jpg" 
-                onClick = {this.addLove} 
+                onClick = {this.addLove.bind(this,index)} 
                 style = {{width:"30px",height:"30px",marginRight:"5px"}}
               />
               <img 
                 src = "../src/smil.jpg" 
-                onClick = {this.addSmile} 
+                onClick = {this.addSmile.bind(this,index)} 
                 style = {{width:"30px",height:"30px",marginRight:"5px"}}
               />
               <img 
                 src = "../src/argey.jpg" 
-                onClick = {this.addAngry} 
+                onClick = {this.addAngry.bind(this,index)} 
                 style = {{width:"30px",height:"30px",marginRight:"5px"}}
               />
               <img 
                 src = "../src/sad.jpg" 
-                onClick = {this.addSad} 
+                onClick = {this.addSad.bind(this,index)} 
                 style = {{width:"30px",height:"30px",marginRight:"5px"}}
               />
                <img 
@@ -163,16 +183,13 @@ export default class InputList extends Component{
                 style = {{width:"40px",height:"40px",marginRight:"5px",float:"right"}}
               />
               
-              <textarea 
-                style={{marginLeft:"20px",borderRadius:"20px",height:"30px",border:"1px solid lightgray"}}
-                value={this.state.commentText}  
-                cols = "40" rows="1" 
-                onChange = {this.commentChange}>
-                {this.state.commentText}
-              </textarea>
-
-             
-          
+              <button 
+                style={{marginLeft:"20px",borderRadius:"20px",height:"30px",border:"1px solid lightgray",width:"200px"}}
+                onClick={this.showNet}
+              >
+              Please Enter Your Comment
+              </button>
+            
               <select onChange={this.selectVal} style={{width:"18%",height:"38px",float:"right"}}>
               { 
                 this.state.Hiding.map((item,index)=>{
@@ -185,17 +202,23 @@ export default class InputList extends Component{
               </select>
 
               <img src="../src/send.jpg"
+              // ///////////////////////////////
               onClick = {this.delComment.bind(this,index)} 
               style = {{width:"30px",height:"30px",marginRight:"5px",marginLeft:"10px"}}               
               />
               <div style={{width:"100%",height:"30px",backgroundColor:"#eee"}}>
-              <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{this.state.thumb}</label>
-              <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{this.state.love}</label>
-              <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{this.state.smile}</label>
-              <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{this.state.angry}</label>
-              <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{this.state.sad}</label>
-              <label style={{fontSize:"18px",color:"gray",margin:"5px 11px",marginLeft:"150px"}}>Total Vote: </label>
-              <label style={{fontSize:"20px",color:"orange",margin:"5px 11px"}}>1000</label>  
+                <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{item.voteThumb}</label>
+                <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{item.voteLove}</label>
+                <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{item.voteSmile}</label>
+                <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{item.voteAngry}</label>
+                <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{item.voteSad}</label>
+                <label style={{fontSize:"18px",color:"gray",margin:"5px 11px",marginLeft:"150px"}}>Total Vote: </label>
+                <label style={{fontSize:"20px",color:"orange",margin:"5px 11px"}}>1000</label>  
+                <img 
+                src = "../src/minus.png" 
+                onClick = {this.delComment.bind(this,index)} 
+                style = {{width:"30px",height:"30px",float:"right"}}
+              />
               </div>
         </div>
              
@@ -253,11 +276,11 @@ export default class InputList extends Component{
     if(this.state.commentText!=''){
       let timeDate=new Date().toLocaleDateString();
       let localTime=new Date().toLocaleTimeString();
-      let person={timeDate:timeDate,timeLocal:localTime,defaultPerson:this.state.defaultPerson,commentText:this.state.commentText,voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0}
+      let person={timeDate:timeDate,timeLocal:localTime,defaultPerson:this.state.defaultPerson,commentText:this.state.commentText,voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,anotherPersonComment:[]}
       this.setState({
-      commentList:[(new Date().toLocaleDateString())+"  "+(new Date().toLocaleTimeString())+"    &"+ this.state.defaultPerson+" said：&" +this.state.commentText,...this.state.commentList],
+      commentList:[person,...this.state.commentList],
       commentText:''
-    })
+    },console.log(this.state.commentList))
     }
   }
 
@@ -268,31 +291,59 @@ export default class InputList extends Component{
       commentList:x
     })
   }
-  addThumb(){
+  addThumb(index){
+    let newCommentList=this.state.commentList;
+    newCommentList[index].voteThumb+=1;
     this.setState({
-      thumb:this.state.thumb+1,
+      commentList:newCommentList,
     })
   }
 
-  addLove(){
+  addLove(index){
+    let newCommentList=this.state.commentList;
+    newCommentList[index].voteLove+=1;
     this.setState({
-      love:this.state.love+1,
+      commentList:newCommentList,
     })
   }
 
-  addSad(){
+  addSad(index){
+    let newCommentList=this.state.commentList;
+    newCommentList[index].voteSad+=1;
     this.setState({
-      sad:this.state.sad+1,
+      commentList:newCommentList,
     })
   }
-  addAngry(){
+  addAngry(index){
+    let newCommentList=this.state.commentList;
+    newCommentList[index].voteAngry+=1;
     this.setState({
-      angry:this.state.angry+1,
+      commentList:newCommentList,
     })
   }
-  addSmile(){
+  addSmile(index){
+    let newCommentList=this.state.commentList;
+    newCommentList[index].voteSmile+=1;
     this.setState({
-      smile:this.state.smile+1,
+      commentList:newCommentList,
+    })
+  }
+  insideCommentChange(e){
+    this.setState({
+      insideComment:e.target.value,
+    })
+  }
+
+  showNet(){
+    this.setState({
+      netComment:"",
+    })
+  }
+
+  hindNetComment(){
+    this.setState({
+      netComment:"none",
+      insideComment:""
     })
   }
 }
