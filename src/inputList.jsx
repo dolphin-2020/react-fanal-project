@@ -20,7 +20,8 @@ export default class InputList extends Component{
       sortingBy:[
         "Sorting by new",
         "Sorting by words",
-        "Sorting by username"
+        "Sorting by username",
+        "Sorting by thumb votes",
       ],
       Hiding:[
         "show your comment",
@@ -51,6 +52,8 @@ export default class InputList extends Component{
       this.netBtn=this.netBtn.bind(this);
       this.sendNetComment=this.sendNetComment.bind(this);
       this.sortBy=this.sortBy.bind(this);
+      this.hidingComm=this.hidingComm.bind(this);
+      this.showHidingComment=this.showHidingComment.bind(this);
   }
 
   render(){
@@ -129,17 +132,18 @@ export default class InputList extends Component{
           }
           </select>
 
+{/* 
 
-          <select onChange={this.selectVal} style={{width:"20%",height:"36px",marginLeft:"50px"}}>
-          { 
-            this.state.showAll.map((item,index)=>{
-              return <option 
-                key={index} 
-                value={item}>{item}
-              </option>
-            })
-          }
-          </select>
+
+
+
+
+
+
+ */}
+          <button onClick={this.showHidingComment} style={{width:"20%",height:"36px",marginLeft:"50px"}}>
+           Show All Hiding Comment
+          </button>
         </div>
         
         <div style = {{width:"70%",margin:"auto"}}>
@@ -147,7 +151,7 @@ export default class InputList extends Component{
             return (
               <div 
               key = {new Date().getTime()+index} 
-              style = {{fontSize:"14px",margin:"10px 0px",boxShadow:"2px 2px 4px 2px #eee, -2px 2px 2px 2px #eee ",}}>
+              style = {{fontSize:"14px",margin:"10px 0px",boxShadow:"2px 2px 4px 2px #eee, -2px 2px 2px 2px #eee ",display:this.state.commentList[index].display}}>
               
               <p style={{backgroundColor:"lightgray"}}>{item.timeDate+" "+item.timeLocal}</p>
               {/* <img 
@@ -220,12 +224,11 @@ export default class InputList extends Component{
               </button>
             
               <img src="../src/send.jpg"
-              // ///////////////////////////////
               onClick = {this.sendNetComment.bind(this,index)} 
               style = {{width:"30px",height:"30px",marginRight:"5px",marginLeft:"10px"}}               
               />
 
-            <select onChange={this.selectVal} style={{width:"18%",height:"38px",float:"right"}}>
+            <select onChange={this.hidingComm.bind(this,index)} style={{width:"18%",height:"38px",float:"right"}}>
               { 
                 this.state.Hiding.map((item,index)=>{
                   return <option 
@@ -306,7 +309,7 @@ export default class InputList extends Component{
     if(this.state.commentText!=''){
       let timeDate=new Date().toLocaleDateString();
       let localTime=new Date().toLocaleTimeString();
-      let person={timeDate:timeDate,timeLocal:localTime,markTime:new Date().getTime(),defaultPerson:this.state.defaultPerson,commentText:this.state.commentText,voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,anotherPersonComment:[]}
+      let person={timeDate:timeDate,timeLocal:localTime,markTime:new Date().getTime(),defaultPerson:this.state.defaultPerson,commentText:this.state.commentText,display:"",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,anotherPersonComment:[]}
       this.setState({
       commentList:[person,...this.state.commentList],
       backupCommentList:[...this.state.commentList],
@@ -416,10 +419,13 @@ export default class InputList extends Component{
       commentList:[...this.state.backupCommentList],
     })
 
-    let newCommentList=[...this.state.commentList];
+    let newCommentList=[...this.state.backupCommentList];
     if(e.target.value==="Sorting by username"){
     newCommentList= newCommentList.filter((item)=>{
         return item.defaultPerson===this.state.defaultPerson;
+      })
+      this.setState({
+        commentList:[...newCommentList],
       })
     }
 
@@ -427,15 +433,46 @@ export default class InputList extends Component{
       newCommentList= newCommentList.sort((a,b)=>{
         return a.markTime-b.markTime;
       })
+      this.setState({
+        commentList:[...newCommentList],
+      })
     }
 
     if(e.target.value==="Sorting by words"){
-      newCommentList.sort((a,b)=>{
+      newCommentList=newCommentList.sort((a,b)=>{
         return b.commentText.length-a.commentText.length;
       })
+      this.setState({
+        commentList:[...newCommentList],
+      })
+
     }
+    if(e.target.value==="Sorting by thumb votes"){
+      newCommentList= newCommentList.sort((a,b)=>{
+        return b.voteThumb-a.voteThumb;
+      })
+      this.setState({
+        commentList:[...newCommentList],
+      })
+    }
+  }
+
+  hidingComm(index){
+    let newCommentList=[...this.state.commentList];
+    newCommentList[index].display="none";
     this.setState({
       commentList:[...newCommentList],
+      backupCommentList:[...this.state.commentList],
     })
+  }
+
+  showHidingComment(e){
+    let newCommentList=[...this.state.commentList];
+      for(let i=0;i<newCommentList.length;i++){
+        newCommentList[i].display="";
+      }
+      this.setState({
+        commentList:[...newCommentList],
+      })
   }
 }
