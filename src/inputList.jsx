@@ -54,6 +54,7 @@ export default class InputList extends Component{
       this.sortBy=this.sortBy.bind(this);
       this.hidingComm=this.hidingComm.bind(this);
       this.showHidingComment=this.showHidingComment.bind(this);
+      
   }
 
   render(){
@@ -132,15 +133,6 @@ export default class InputList extends Component{
           }
           </select>
 
-{/* 
-
-
-
-
-
-
-
- */}
           <button onClick={this.showHidingComment} style={{width:"20%",height:"36px",marginLeft:"50px"}}>
            Show All Hiding Comment
           </button>
@@ -153,7 +145,7 @@ export default class InputList extends Component{
               key = {new Date().getTime()+index} 
               style = {{fontSize:"14px",margin:"10px 0px",boxShadow:"2px 2px 4px 2px #eee, -2px 2px 2px 2px #eee ",display:this.state.commentList[index].display}}>
               
-              <p style={{backgroundColor:"lightgray"}}>{item.timeDate+" "+item.timeLocal}</p>
+              <p style={{backgroundColor:"lightgray"}}>{item.markTime}</p>
               {/* <img 
                 src = "../src/love.jpg" 
                 onClick = {this.delComment.bind(this,index)} 
@@ -163,14 +155,14 @@ export default class InputList extends Component{
               
               <p style={{backgroundColor:"#eee"}}>{item.commentText}</p>
               
-              <div style={{width:"90%",backgroundColor:"lightgray",margin:"auto",display:""}}>
+              <div style={{width:"90%",backgroundColor:"lightgray",margin:"auto",display:this.state.commentList[index].offOn}}>
               {
                 this.state.commentList[index].anotherPersonComment.map((item,index)=>{
                   return <div 
                     key = {new Date().getTime()+index} 
                     style = {{fontSize:"14px",margin:"10px 0px",boxShadow:"2px 2px 4px 2px #eee, -2px 2px 2px 2px #eee ",}}>
                     
-                    <p style={{backgroundColor:"lightgray"}}>{item.timeDate+" "+item.timeLocal}</p>
+                    <p style={{backgroundColor:"lightgray"}}>{item.markTime}</p>
                     {/* <img 
                       src = "../src/love.jpg" 
                       onClick = {this.delComment.bind(this,index)} 
@@ -212,7 +204,7 @@ export default class InputList extends Component{
               />
                <img 
                 src = "../src/comment.jpg" 
-                onClick = {this.delComment.bind(this,index)} 
+                onClick = {this.showAllComment.bind(this,index)} 
                 style = {{width:"40px",height:"40px",marginRight:"5px",float:"right"}}
               />
               
@@ -245,8 +237,6 @@ export default class InputList extends Component{
                 <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{item.voteSmile}</label>
                 <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{item.voteAngry}</label>
                 <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{item.voteSad}</label>
-                <label style={{fontSize:"18px",color:"gray",margin:"5px 11px",marginLeft:"150px"}}>Total Vote: </label>
-                <label style={{fontSize:"20px",color:"orange",margin:"5px 11px"}}>1000</label>  
                 <img 
                 src = "../src/minus.png" 
                 onClick = {this.delComment.bind(this,index)} 
@@ -309,7 +299,7 @@ export default class InputList extends Component{
     if(this.state.commentText!=''){
       let timeDate=new Date().toLocaleDateString();
       let localTime=new Date().toLocaleTimeString();
-      let person={timeDate:timeDate,timeLocal:localTime,markTime:new Date().getTime(),defaultPerson:this.state.defaultPerson,commentText:this.state.commentText,display:"",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,anotherPersonComment:[]}
+      let person={timeDate:timeDate,timeLocal:localTime,markTime:new Date().getTime(),defaultPerson:this.state.defaultPerson,commentText:this.state.commentText,display:"",offOn:"",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,anotherPersonComment:[]}
       this.setState({
       commentList:[person,...this.state.commentList],
       backupCommentList:[...this.state.commentList],
@@ -402,7 +392,8 @@ export default class InputList extends Component{
       let newCommentList=[...this.state.commentList];
       let timeDate=new Date().toLocaleDateString();
       let localTime=new Date().toLocaleTimeString();
-      let person={timeDate:timeDate,timeLocal:localTime,defaultPerson:this.state.defaultPerson,commentText:this.state.netCommentText,voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0}
+      let markTime=new Date().getTime();
+      let person={timeDate:timeDate,timeLocal:localTime,markTime:markTime,defaultPerson:this.state.defaultPerson,commentText:this.state.netCommentText,voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0}
       newCommentList[index].anotherPersonComment=[person,...newCommentList[index].anotherPersonComment];
       this.setState({
         commentList:[...newCommentList],
@@ -431,7 +422,7 @@ export default class InputList extends Component{
 
     if(e.target.value==="Sorting by new"){
       newCommentList= newCommentList.sort((a,b)=>{
-        return a.markTime-b.markTime;
+        return b.markTime-a.markTime;
       })
       this.setState({
         commentList:[...newCommentList],
@@ -473,6 +464,16 @@ export default class InputList extends Component{
       }
       this.setState({
         commentList:[...newCommentList],
+        backupCommentList:[...this.state.commentList],
       })
+  }
+  showAllComment(index){
+    let newCommentList=[...this.state.commentList];
+    newCommentList[index].offOn===""?newCommentList[index].offOn="none":newCommentList[index].offOn="";
+
+    this.setState({
+      commentList:[...newCommentList],
+      backupCommentList:[...this.state.commentList],
+    })
   }
 }
