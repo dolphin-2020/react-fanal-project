@@ -15,7 +15,89 @@ export default class InputList extends Component{
       ],
       commentText:'',
 
-      commentList:[],
+      commentList:[
+        {
+          markTime:1580185561774,
+          defaultPerson:"Dolphin",commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
+          display:"",
+          offOn:"",
+          voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,
+          anotherPersonComment:[
+            {
+              markTime:1580200561774,
+              defaultPerson:"Zane",
+              commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0
+            },
+            {
+              markTime:1580205561774,defaultPerson:"Dragon",commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0
+            },
+          ]
+        },
+        {
+          markTime:1580185561774,
+          defaultPerson:"Dragon",commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
+          display:"",
+          offOn:"",
+          voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,
+          anotherPersonComment:[
+            {
+              markTime:1580200561774,
+              defaultPerson:"Dolphin",
+              commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0
+            },
+            {
+              markTime:1580205561774,defaultPerson:"Amit",commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0
+            },
+          ]
+        },
+        {
+          markTime:1580185561774,
+          defaultPerson:"Zane",commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
+          display:"",
+          offOn:"",
+          voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,
+          anotherPersonComment:[
+            {
+              markTime:1580209561774,
+              defaultPerson:"Zane",
+              commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0
+            },
+            {
+              markTime:1580205561774,defaultPerson:"Dolphin",commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0
+            },
+          ]
+        },
+        {
+          markTime:1580185561774,
+          defaultPerson:"Amit",commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
+          display:"",
+          offOn:"",
+          voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,
+          anotherPersonComment:[
+            {
+              markTime:1580200561774,
+              defaultPerson:"Zane",
+              commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0
+            },
+           
+          ]
+        },
+        {
+          markTime:1580185561774,
+          defaultPerson:"Dragon",commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM  your GitHub URL for this project.",
+          display:"",
+          offOn:"",
+          voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,
+          anotherPersonComment:[
+            {
+              markTime:1580290561774,
+              defaultPerson:"Dolphin",
+              commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0
+            },
+            
+          ]
+        },
+      ],
 
       sortingBy:[
         "Sorting by new",
@@ -81,7 +163,8 @@ export default class InputList extends Component{
       </div>
 
       <div style={{width:"100%",height:"100px",backgroundColor:"lightblue",marginBottom:"15px"}}>
-      <img src="../src/dolphin-icon.jpg" alt="" style={{width:"10%"}}></img>
+      <h1 style={{margin:"auto",textAlign:"center",color:"#06f",marginTop:"20px"}}>Dolphin's Assignment</h1>
+      <img src="../src/dolphin-icon.jpg" alt="" style={{width:"10%",paddingTop:"60px"}}></img>
       </div>
       <main>
       <div style={{width:"70%",margin:"auto"}}>
@@ -145,7 +228,7 @@ export default class InputList extends Component{
               key = {new Date().getTime()+index} 
               style = {{fontSize:"14px",margin:"10px 0px",boxShadow:"2px 2px 4px 2px #eee, -2px 2px 2px 2px #eee ",display:this.state.commentList[index].display}}>
               
-              <p style={{backgroundColor:"lightgray"}}>{item.markTime}</p>
+              <p style={{backgroundColor:"lightgray"}}>{this.timeFormat(item.markTime)}</p>
               {/* <img 
                 src = "../src/love.jpg" 
                 onClick = {this.delComment.bind(this,index)} 
@@ -162,7 +245,7 @@ export default class InputList extends Component{
                     key = {new Date().getTime()+index} 
                     style = {{fontSize:"14px",margin:"10px 0px",boxShadow:"2px 2px 4px 2px #eee, -2px 2px 2px 2px #eee ",}}>
                     
-                    <p style={{backgroundColor:"lightgray"}}>{item.markTime}</p>
+                    <p style={{backgroundColor:"lightgray"}}>{this.timeFormat(item.markTime)}</p>
                     {/* <img 
                       src = "../src/love.jpg" 
                       onClick = {this.delComment.bind(this,index)} 
@@ -297,9 +380,8 @@ export default class InputList extends Component{
       alert("Are you kidding me")
     }
     if(this.state.commentText!=''){
-      let timeDate=new Date().toLocaleDateString();
-      let localTime=new Date().toLocaleTimeString();
-      let person={timeDate:timeDate,timeLocal:localTime,markTime:new Date().getTime(),defaultPerson:this.state.defaultPerson,commentText:this.state.commentText,display:"",offOn:"",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,anotherPersonComment:[]}
+      
+      let person={markTime:new Date().getTime(),defaultPerson:this.state.defaultPerson,commentText:this.state.commentText,display:"",offOn:"",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,anotherPersonComment:[]}
       this.setState({
       commentList:[person,...this.state.commentList],
       backupCommentList:[...this.state.commentList],
@@ -390,10 +472,8 @@ export default class InputList extends Component{
       alert("Are you kidding me?")
     }else{
       let newCommentList=[...this.state.commentList];
-      let timeDate=new Date().toLocaleDateString();
-      let localTime=new Date().toLocaleTimeString();
       let markTime=new Date().getTime();
-      let person={timeDate:timeDate,timeLocal:localTime,markTime:markTime,defaultPerson:this.state.defaultPerson,commentText:this.state.netCommentText,voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0}
+      let person={markTime:markTime,defaultPerson:this.state.defaultPerson,commentText:this.state.netCommentText,voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0}
       newCommentList[index].anotherPersonComment=[person,...newCommentList[index].anotherPersonComment];
       this.setState({
         commentList:[...newCommentList],
@@ -475,5 +555,29 @@ export default class InputList extends Component{
       commentList:[...newCommentList],
       backupCommentList:[...this.state.commentList],
     })
+  }
+
+  timeFormat(time){
+    let minute=1000*60;
+    let hour=minute*60;
+    let day=hour*24;
+    let week=hour*7;
+    let now=new Date().getTime();
+    let diffTime=now-time
+    if(diffTime<minute){
+      return "Just Now";
+    }
+    if(diffTime>minute&&diffTime<hour){
+      return parseInt(diffTime/minute) + " minute ago";
+    }
+    if(diffTime>=hour&&diffTime<day){
+      return parseInt(diffTime/hour)+" hours ago"
+    }
+    if(diffTime>=day&&diffTime<week){
+      return parseInt(diffTime/day)+" day ago"
+    }
+    if(diffTime>=week){
+      return new Date(time);
+    }
   }
 }
