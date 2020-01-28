@@ -30,7 +30,8 @@ export default class InputList extends Component{
         "Show all comment",
       ],
       insideComment:'',
-      netComment:"none",
+      netCommentDisplay:"none",
+      netCommentText:'',
     }
       this.valChange=this.valChange.bind(this);
       this.addToList=this.addToList.bind(this);
@@ -45,12 +46,14 @@ export default class InputList extends Component{
       this.insideCommentChange=this.insideCommentChange.bind(this);
       this.showNet=this.showNet.bind(this);
       this.hindNetComment=this.hindNetComment.bind(this);
+      this.netBtn=this.netBtn.bind(this);
+      this.sendNetComment=this.sendNetComment.bind(this);
   }
 
   render(){
     return (
       <Fragment>
-      <div style={{display:this.state.netComment,width:"400px",position:"absolute",top:"50%",left:"50%", transform: "translate(-50%, -50%)"}}>
+      <div style={{display:this.state.netCommentDisplay,width:"400px",position:"fixed",top:"50%",left:"50%", transform: "translate(-50%, -50%)",zIndex:"100"}}>
       <textarea 
           placeholder="Enter your comment"
           style={{marginTop:"10px",width:"100%",backgroundColor:"#eee"}}
@@ -65,6 +68,7 @@ export default class InputList extends Component{
           </button>
           <button 
             style={{width:"50%",float:"right",backgroundColor:"#06f",color:"white"}}
+            onClick={this.netBtn}
           >Submit
           </button>
       </div>
@@ -151,6 +155,32 @@ export default class InputList extends Component{
               <p style={{fontSize:"16px",color:"blue"}}>{item.defaultPerson}</p>
               
               <p style={{backgroundColor:"#eee"}}>{item.commentText}</p>
+              
+              <div style={{width:"90%",height:"300px",backgroundColor:"lightgray",margin:"auto",display:""}}>
+              {
+                this.state.commentList[index].anotherPersonComment.map((item,index)=>{
+                  return <div 
+                    key = {new Date().getTime()+index} 
+                    style = {{fontSize:"14px",margin:"10px 0px",boxShadow:"2px 2px 4px 2px #eee, -2px 2px 2px 2px #eee ",}}>
+                    
+                    <p style={{backgroundColor:"lightgray"}}>{item.timeDate+" "+item.timeLocal}</p>
+                    {/* <img 
+                      src = "../src/love.jpg" 
+                      onClick = {this.delComment.bind(this,index)} 
+                      style = {{width:"30px",height:"30px",marginRight:"5px"}}
+                    > */}
+                    <p style={{fontSize:"16px",color:"blue"}}>{item.defaultPerson}</p>
+                    
+                    <p style={{backgroundColor:"#eee"}}>{item.commentText}</p>
+                    </div>
+                })
+              }
+
+
+
+
+              </div>
+
               <div>
               <img 
                 src = "../src/thumb.jpg" 
@@ -184,13 +214,19 @@ export default class InputList extends Component{
               />
               
               <button 
-                style={{marginLeft:"20px",borderRadius:"20px",height:"30px",border:"1px solid lightgray",width:"200px"}}
+                style={{marginLeft:"20px",borderRadius:"20px",height:"30px",border:"1px solid lightgray",width:"200px",position:"relative",top:"-10px"}}
                 onClick={this.showNet}
               >
-              Please Enter Your Comment
+              {this.state.netCommentText===''? 'Please Enter Your Comment':this.state.netCommentText}
               </button>
             
-              <select onChange={this.selectVal} style={{width:"18%",height:"38px",float:"right"}}>
+              <img src="../src/send.jpg"
+              // ///////////////////////////////
+              onClick = {this.sendNetComment.bind(this,index)} 
+              style = {{width:"30px",height:"30px",marginRight:"5px",marginLeft:"10px"}}               
+              />
+
+            <select onChange={this.selectVal} style={{width:"18%",height:"38px",float:"right"}}>
               { 
                 this.state.Hiding.map((item,index)=>{
                   return <option 
@@ -201,11 +237,6 @@ export default class InputList extends Component{
               }
               </select>
 
-              <img src="../src/send.jpg"
-              // ///////////////////////////////
-              onClick = {this.delComment.bind(this,index)} 
-              style = {{width:"30px",height:"30px",marginRight:"5px",marginLeft:"10px"}}               
-              />
               <div style={{width:"100%",height:"30px",backgroundColor:"#eee"}}>
                 <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{item.voteThumb}</label>
                 <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{item.voteLove}</label>
@@ -336,14 +367,34 @@ export default class InputList extends Component{
 
   showNet(){
     this.setState({
-      netComment:"",
+      netCommentDisplay:"",
     })
   }
 
   hindNetComment(){
     this.setState({
-      netComment:"none",
+      netCommentDisplay:"none",
       insideComment:""
     })
+  }
+
+  netBtn(){
+    this.setState({
+      netCommentText:this.state.insideComment,
+      netCommentDisplay:"none"
+    },console.log(this.state.netCommentText))
+  }
+
+  sendNetComment(index){
+    let newCommentList=[...this.state.commentList];
+    let timeDate=new Date().toLocaleDateString();
+    let localTime=new Date().toLocaleTimeString();
+    let person={timeDate:timeDate,timeLocal:localTime,defaultPerson:this.state.defaultPerson,commentText:this.state.netCommentText,voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0}
+    newCommentList[index].anotherPersonComment=[person,...newCommentList[index].anotherPersonComment];
+    this.setState({
+      commentList:newCommentList,
+      insideComment:"",
+      netCommentText:"",
+    },console.log(this.state.netCommentText[index].anotherPersonComment))
   }
 }
