@@ -1,141 +1,28 @@
 import React,{Component,Fragment} from 'react'
-
+import store from '../src/store.jsx'
+import styles from '../src/styles.jsx'
 export default class InputList extends Component{
   constructor(props){
     super(props);
-    this.state={
-      defaultPerson:'anonymous',
-      register:'',
-      nameList:[
-        "anonymous",
-        "Dolphin",
-        "Dragon",
-        "Zane",
-        "Amit",
-      ],
-      commentText:'',
-
-      commentList:[
-        {
-          markTime:1580185561774,
-          defaultPerson:"Dolphin",commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
-          display:"",
-          offOn:"",
-          voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,
-          anotherPersonComment:[
-            {
-              markTime:1580200561774,
-              defaultPerson:"Zane",
-              commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0
-            },
-            {
-              markTime:1580205561774,defaultPerson:"Dragon",commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0
-            },
-          ]
-        },
-        {
-          markTime:1580185561774,
-          defaultPerson:"Dragon",commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
-          display:"",
-          offOn:"",
-          voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,
-          anotherPersonComment:[
-            {
-              markTime:1580200561774,
-              defaultPerson:"Dolphin",
-              commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0
-            },
-            {
-              markTime:1580205561774,defaultPerson:"Amit",commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0
-            },
-          ]
-        },
-        {
-          markTime:1580185561774,
-          defaultPerson:"Zane",commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
-          display:"",
-          offOn:"",
-          voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,
-          anotherPersonComment:[
-            {
-              markTime:1580209561774,
-              defaultPerson:"Zane",
-              commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0
-            },
-            {
-              markTime:1580205561774,defaultPerson:"Dolphin",commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0
-            },
-          ]
-        },
-        {
-          markTime:1580185561774,
-          defaultPerson:"Amit",commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
-          display:"",
-          offOn:"",
-          voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,
-          anotherPersonComment:[
-            {
-              markTime:1580200561774,
-              defaultPerson:"Zane",
-              commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0
-            },
-           
-          ]
-        },
-        {
-          markTime:1580185561774,
-          defaultPerson:"Dragon",commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM  your GitHub URL for this project.",
-          display:"",
-          offOn:"",
-          voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,
-          anotherPersonComment:[
-            {
-              markTime:1580290561774,
-              defaultPerson:"Dolphin",
-              commentText:"Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0
-            },
-            
-          ]
-        },
-      ],
-
-      sortingBy:[
-        "Sorting by new",
-        "Sorting by words",
-        "Sorting by username",
-        "Sorting by thumb votes",
-      ],
-      Hiding:[
-        "show your comment",
-        "hidding your comment",
-      ],
-      showAll:[
-        "Show no hiding comment",
-        "Show all comment",
-      ],
-      insideComment:'',
-      netCommentDisplay:"none",
-      netCommentText:'',
-      backupCommentList:[],
-    }
-      this.valChange=this.valChange.bind(this);
-      this.addToList=this.addToList.bind(this);
-      this.selectVal=this.selectVal.bind(this);
-      this.commentChange=this.commentChange.bind(this);
-      this.addComment=this.addComment.bind(this);
-      this.addThumb=this.addThumb.bind(this);
-      this.addLove=this.addLove.bind(this);
-      this.addSad=this.addSad.bind(this);
-      this.addAngry=this.addAngry.bind(this);
-      this.addSmile=this.addSmile.bind(this);
-      this.insideCommentChange=this.insideCommentChange.bind(this);
-      this.showNet=this.showNet.bind(this);
-      this.hindNetComment=this.hindNetComment.bind(this);
-      this.netBtn=this.netBtn.bind(this);
-      this.sendNetComment=this.sendNetComment.bind(this);
-      this.sortBy=this.sortBy.bind(this);
-      this.hidingComm=this.hidingComm.bind(this);
-      this.showHidingComment=this.showHidingComment.bind(this);
+    this.state=JSON.parse(JSON.stringify(store));
+    this.valChange=this.valChange.bind(this);
+    this.addToList=this.addToList.bind(this);
+    this.selectVal=this.selectVal.bind(this);
+    this.commentChange=this.commentChange.bind(this);
+    this.addComment=this.addComment.bind(this);
+    this.addThumb=this.addThumb.bind(this);
+    this.addLove=this.addLove.bind(this);
+    this.addSad=this.addSad.bind(this);
+    this.addAngry=this.addAngry.bind(this);
+    this.addSmile=this.addSmile.bind(this);
+    this.insideCommentChange=this.insideCommentChange.bind(this);
+    this.showNet=this.showNet.bind(this);
+    this.hindNetComment=this.hindNetComment.bind(this);
+    this.netBtn=this.netBtn.bind(this);
+    this.sendNetComment=this.sendNetComment.bind(this);
+    this.sortBy=this.sortBy.bind(this);
+    this.hidingComm=this.hidingComm.bind(this);
+this.showHidingComment=this.showHidingComment.bind(this);
       
   }
 
@@ -145,25 +32,25 @@ export default class InputList extends Component{
       <div style={{display:this.state.netCommentDisplay,width:"400px",position:"fixed",top:"50%",left:"50%", transform: "translate(-50%, -50%)",zIndex:"100"}}>
       <textarea 
           placeholder="Enter your comment"
-          style={{marginTop:"10px",width:"100%",backgroundColor:"#eee"}}
+          style={styles.textAreaNet}
           value={this.state.insideComment}  
           cols = "138" rows="19" 
           onChange = {this.insideCommentChange}>
           </textarea>
           <button 
-            style={{width:"50%",float:"left",backgroundColor:"#06f",color:"white"}}
+            style={styles.hindNetComment}
             onClick={this.hindNetComment}
           >Cancel
           </button>
           <button 
-            style={{width:"50%",float:"right",backgroundColor:"#06f",color:"white"}}
+            style={styles.netBtn}
             onClick={this.netBtn}
           >Submit
           </button>
       </div>
 
-      <div style={{width:"100%",height:"100px",backgroundColor:"lightblue",marginBottom:"15px"}}>
-      <h1 style={{margin:"auto",textAlign:"center",color:"#06f",marginTop:"20px"}}>Dolphin's Assignment</h1>
+      <div style={styles.headDiv}>
+      <h1 style={styles.headText}>Dolphin's Assignment</h1>
       <img src="../src/dolphin-icon.jpg" alt="" style={{width:"10%",paddingTop:"60px"}}></img>
       </div>
       <main>
@@ -177,7 +64,7 @@ export default class InputList extends Component{
         <button 
           onClick={this.addToList} 
           type="submit" 
-          style={{width:"15%",height:"36px",backgroundColor:"#06f",color:"white"}}>Register</button>
+          style={styles.addTodoListBtn}>Register</button>
         <select onChange={this.selectVal} style={{width:"22%",height:"36px"}}>
         { 
           this.state.nameList.map((item,index)=>{
@@ -200,7 +87,7 @@ export default class InputList extends Component{
         <br/>
         <button 
           onClick = {this.addComment}
-          style={{width:"100px",height:"36px",backgroundColor:"#06f",color:"white"}} 
+          style={styles.addComment} 
           type="button" placeholder="Please input comment">
           Submit
           </button>
@@ -216,8 +103,8 @@ export default class InputList extends Component{
           }
           </select>
 
-          <button onClick={this.showHidingComment} style={{width:"20%",height:"36px",marginLeft:"50px"}}>
-           Show All Hiding Comment
+          <button onClick={this.showHidingComment} style={styles.showHidingCommentBtn}>
+           Show All Comment
           </button>
         </div>
         
@@ -243,7 +130,7 @@ export default class InputList extends Component{
                 this.state.commentList[index].anotherPersonComment.map((item,index)=>{
                   return <div 
                     key = {new Date().getTime()+index} 
-                    style = {{fontSize:"14px",margin:"10px 0px",boxShadow:"2px 2px 4px 2px #eee, -2px 2px 2px 2px #eee ",}}>
+                    style = {styles.anotherPersonComment}>
                     
                     <p style={{backgroundColor:"lightgray"}}>{this.timeFormat(item.markTime)}</p>
                     {/* <img 
@@ -263,36 +150,36 @@ export default class InputList extends Component{
               <img 
                 src = "../src/thumb.jpg" 
                 onClick = {this.addThumb.bind(this,index)} 
-                style = {{width:"30px",height:"30px",marginRight:"5px"}}
+                style = {styles.addThumb}
               />
               <img 
                 src = "../src/love.jpg" 
                 onClick = {this.addLove.bind(this,index)} 
-                style = {{width:"30px",height:"30px",marginRight:"5px"}}
+                style = {styles.addThumb}
               />
               <img 
                 src = "../src/smil.jpg" 
                 onClick = {this.addSmile.bind(this,index)} 
-                style = {{width:"30px",height:"30px",marginRight:"5px"}}
+                style = {styles.addThumb}
               />
               <img 
                 src = "../src/argey.jpg" 
                 onClick = {this.addAngry.bind(this,index)} 
-                style = {{width:"30px",height:"30px",marginRight:"5px"}}
+                style = {styles.addThumb}
               />
               <img 
                 src = "../src/sad.jpg" 
                 onClick = {this.addSad.bind(this,index)} 
-                style = {{width:"30px",height:"30px",marginRight:"5px"}}
+                style = {styles.addThumb}
               />
                <img 
                 src = "../src/comment.jpg" 
                 onClick = {this.showAllComment.bind(this,index)} 
-                style = {{width:"40px",height:"40px",marginRight:"5px",float:"right"}}
+                style = {styles.commImg}
               />
               
               <button 
-                style={{marginLeft:"20px",borderRadius:"20px",height:"30px",border:"1px solid lightgray",width:"200px",position:"relative",top:"-10px"}}
+                style={styles.showNet}
                 onClick={this.showNet}
               >
               {this.state.netCommentText===''? 'Please Enter Your Comment':this.state.netCommentText.slice(0,32)+"..."}
@@ -300,10 +187,11 @@ export default class InputList extends Component{
             
               <img src="../src/send.jpg"
               onClick = {this.sendNetComment.bind(this,index)} 
-              style = {{width:"30px",height:"30px",marginRight:"5px",marginLeft:"10px"}}               
+              style = {styles.send}               
               />
 
-            <select onChange={this.hidingComm.bind(this,index)} style={{width:"18%",height:"38px",float:"right"}}>
+            <select onChange={this.hidingComm.bind(this,index)} 
+              style={{width:"18%",height:"38px",float:"right"}}>
               { 
                 this.state.Hiding.map((item,index)=>{
                   return <option 
@@ -314,16 +202,16 @@ export default class InputList extends Component{
               }
               </select>
 
-              <div style={{width:"100%",height:"30px",backgroundColor:"#eee"}}>
-                <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{item.voteThumb}</label>
-                <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{item.voteLove}</label>
-                <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{item.voteSmile}</label>
-                <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{item.voteAngry}</label>
-                <label style={{fontSize:"25px",color:"orange",margin:"5px 11px"}}>{item.voteSad}</label>
+              <div style={styles.showVoteDiv}>
+                <label style={styles.label}>{item.voteThumb}</label>
+                <label style={styles.label}>{item.voteLove}</label>
+                <label style={styles.label}>{item.voteSmile}</label>
+                <label style={styles.label}>{item.voteAngry}</label>
+                <label style={styles.label}>{item.voteSad}</label>
                 <img 
                 src = "../src/minus.png" 
                 onClick = {this.delComment.bind(this,index)} 
-                style = {{width:"30px",height:"30px",float:"right"}}
+                style = {styles.delComment}
               />
               </div>
         </div>
@@ -398,8 +286,9 @@ export default class InputList extends Component{
       backupCommentList:[...this.state.commentList],
     })
   }
+
   addThumb(index){
-    let newCommentList=this.state.commentList;
+    let newCommentList=[...this.state.commentList];
     newCommentList[index].voteThumb+=1;
     this.setState({
       commentList:[...newCommentList],
@@ -424,6 +313,7 @@ export default class InputList extends Component{
       backupCommentList:[...this.state.commentList],
     })
   }
+
   addAngry(index){
     let newCommentList=this.state.commentList;
     newCommentList[index].voteAngry+=1;
@@ -440,6 +330,7 @@ export default class InputList extends Component{
       backupCommentList:[...this.state.commentList],
     })
   }
+  
   insideCommentChange(e){
     this.setState({
       insideComment:e.target.value,
@@ -547,10 +438,10 @@ export default class InputList extends Component{
         backupCommentList:[...this.state.commentList],
       })
   }
+
   showAllComment(index){
     let newCommentList=[...this.state.commentList];
     newCommentList[index].offOn===""?newCommentList[index].offOn="none":newCommentList[index].offOn="";
-
     this.setState({
       commentList:[...newCommentList],
       backupCommentList:[...this.state.commentList],
