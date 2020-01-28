@@ -1,6 +1,5 @@
 import React,{Component,Fragment} from 'react'
 import store from '../src/store.jsx'
-import styles from '../src/styles.jsx'
 import NetCommList from '../src/netCommList.jsx'
 import Header from '../src/header.jsx'
 import HeaderInput from '../src/headerInput.jsx'
@@ -28,11 +27,14 @@ export default class InputList extends Component{
     this.sortBy=this.sortBy.bind(this);
     this.hidingComm=this.hidingComm.bind(this);
     this.showHidingComment=this.showHidingComment.bind(this);
+    this.showAllComment=this.showAllComment.bind(this);
+    this.delComment=this.delComment.bind(this);
   }
 
   render(){
     return (
       <Fragment>
+
         <NetCommList
           netCommentDisplay={this.state.netCommentDisplay}
           insideComment={this.state.insideComment}
@@ -41,6 +43,7 @@ export default class InputList extends Component{
           netBtn={this.netBtn}
        /> 
       <Header/>
+
       <HeaderInput
         valChange={this.valChange}
         register={this.state.register}
@@ -90,7 +93,6 @@ export default class InputList extends Component{
     if(this.state.register===''){
       alert("Are you kidding me?")
     }
-    
     if(this.state.register!=''){
       this.setState(
         {
@@ -149,7 +151,7 @@ export default class InputList extends Component{
   }
 
   addLove(index){
-    let newCommentList=this.state.commentList;
+    let newCommentList=[...this.state.commentList];
     newCommentList[index].voteLove+=1;
     this.setState({
       commentList:[...newCommentList],
@@ -158,7 +160,7 @@ export default class InputList extends Component{
   }
 
   addSad(index){
-    let newCommentList=this.state.commentList;
+    let newCommentList=[...this.state.commentList];
     newCommentList[index].voteSad+=1;
     this.setState({
       commentList:[...newCommentList],
@@ -167,7 +169,7 @@ export default class InputList extends Component{
   }
 
   addAngry(index){
-    let newCommentList=this.state.commentList;
+    let newCommentList=[...this.state.commentList];
     newCommentList[index].voteAngry+=1;
     this.setState({
       commentList:[...newCommentList],
@@ -175,7 +177,7 @@ export default class InputList extends Component{
     })
   }
   addSmile(index){
-    let newCommentList=this.state.commentList;
+    let newCommentList=[...this.state.commentList];
     newCommentList[index].voteSmile+=1;
     this.setState({
       commentList:[...newCommentList],

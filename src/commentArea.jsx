@@ -27,11 +27,6 @@ class CommentArea extends Component{
                 style = {styles.anotherPersonComment}>
                 
                 <p style={{backgroundColor:"lightgray"}}>{this.props.timeFormat(item.markTime)}</p>
-                {/* <img 
-                  src = "../src/love.jpg" 
-                  onClick = {this.delComment.bind(this,index)} 
-                  style = {{width:"30px",height:"30px",marginRight:"5px"}}
-                > */}
                 <p style={{fontSize:"16px",color:"blue"}}>{item.defaultPerson}</p>
                 
                 <p style={{backgroundColor:"#eee"}}>{item.commentText}</p>
@@ -43,32 +38,32 @@ class CommentArea extends Component{
           <div>
           <img 
             src = "../src/thumb.jpg" 
-            onClick = {()=>{this.props.addThumb.bind(index)}} 
+            onClick = {()=>{this.props.addThumb(index)}} 
             style = {styles.addThumb}
           />
           <img 
             src = "../src/love.jpg" 
-            onClick = {()=>{this.props.addLove.bind(index)}} 
+            onClick = {()=>{this.props.addLove(index)}} 
             style = {styles.addThumb}
           />
           <img 
             src = "../src/smil.jpg" 
-            onClick = {()=>{this.props.addSmile.bind(index)}}
+            onClick = {()=>{this.props.addSmile(index)}}
             style = {styles.addThumb}
           />
           <img 
             src = "../src/argey.jpg" 
-            onClick = {()=>{this.props.addAngry.bind(index)}} 
+            onClick = {()=>{this.props.addAngry(index)}} 
             style = {styles.addThumb}
           />
           <img 
             src = "../src/sad.jpg" 
-            onClick = {()=>{this.props.addSad.bind(index)} }
+            onClick = {()=>{this.props.addSad(index)} }
             style = {styles.addThumb}
           />
            <img 
             src = "../src/comment.jpg" 
-            onClick = {()=>{this.props.showAllComment.bind(index)}} 
+            onClick = {()=>{this.props.showAllComment(index)}} 
             style = {styles.commImg}
           />
           
@@ -80,11 +75,11 @@ class CommentArea extends Component{
           </button>
         
           <img src="../src/send.jpg"
-          onClick = {()=>{this.props.sendNetComment.bind(index)}} 
+          onClick = {()=>{this.props.sendNetComment(index)}} 
           style = {styles.send}               
           />
 
-        <select onChange={()=>{this.props.hidingComm.bind(index)}} 
+        <select onChange={()=>{this.props.hidingComm(index)}} 
           style={{width:"18%",height:"38px",float:"right"}}>
           { 
             this.props.Hiding.map((item,index)=>{
@@ -104,7 +99,7 @@ class CommentArea extends Component{
             <label style={styles.label}>{item.voteSad}</label>
             <img 
             src = "../src/minus.png" 
-            onClick = {()=>{this.props.delComment.bind(index)}} 
+            onClick = {()=>{this.props.delComment(index)}} 
             style = {styles.delComment}
           />
           </div>

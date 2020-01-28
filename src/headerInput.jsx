@@ -47,7 +47,7 @@ class HeaderInput extends Component{
         type="button" placeholder="Please input comment">
         Submit
         </button>
-  
+
         <select onChange={this.props.sortBy} 
         style={styles.sortSelect}>
         { 
