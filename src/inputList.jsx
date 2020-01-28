@@ -7,6 +7,7 @@ export default class InputList extends Component{
       defaultPerson:'anonymous',
       register:'',
       nameList:[
+        "anonymous",
         "Dolphin",
         "Dragon",
         "Zane",
@@ -32,6 +33,7 @@ export default class InputList extends Component{
       insideComment:'',
       netCommentDisplay:"none",
       netCommentText:'',
+      backupCommentList:[],
     }
       this.valChange=this.valChange.bind(this);
       this.addToList=this.addToList.bind(this);
@@ -48,6 +50,7 @@ export default class InputList extends Component{
       this.hindNetComment=this.hindNetComment.bind(this);
       this.netBtn=this.netBtn.bind(this);
       this.sendNetComment=this.sendNetComment.bind(this);
+      this.sortBy=this.sortBy.bind(this);
   }
 
   render(){
@@ -115,7 +118,7 @@ export default class InputList extends Component{
           Submit
           </button>
 
-          <select onChange={this.selectVal} style={{width:"20%",height:"36px",marginLeft:"50px"}}>
+          <select onChange={this.sortBy} style={{width:"20%",height:"36px",marginLeft:"50px"}}>
           { 
             this.state.sortingBy.map((item,index)=>{
               return <option 
@@ -156,7 +159,7 @@ export default class InputList extends Component{
               
               <p style={{backgroundColor:"#eee"}}>{item.commentText}</p>
               
-              <div style={{width:"90%",height:"300px",backgroundColor:"lightgray",margin:"auto",display:""}}>
+              <div style={{width:"90%",backgroundColor:"lightgray",margin:"auto",display:""}}>
               {
                 this.state.commentList[index].anotherPersonComment.map((item,index)=>{
                   return <div 
@@ -175,10 +178,6 @@ export default class InputList extends Component{
                     </div>
                 })
               }
-
-
-
-
               </div>
 
               <div>
@@ -217,7 +216,7 @@ export default class InputList extends Component{
                 style={{marginLeft:"20px",borderRadius:"20px",height:"30px",border:"1px solid lightgray",width:"200px",position:"relative",top:"-10px"}}
                 onClick={this.showNet}
               >
-              {this.state.netCommentText===''? 'Please Enter Your Comment':this.state.netCommentText}
+              {this.state.netCommentText===''? 'Please Enter Your Comment':this.state.netCommentText.slice(0,32)+"..."}
               </button>
             
               <img src="../src/send.jpg"
@@ -307,26 +306,29 @@ export default class InputList extends Component{
     if(this.state.commentText!=''){
       let timeDate=new Date().toLocaleDateString();
       let localTime=new Date().toLocaleTimeString();
-      let person={timeDate:timeDate,timeLocal:localTime,defaultPerson:this.state.defaultPerson,commentText:this.state.commentText,voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,anotherPersonComment:[]}
+      let person={timeDate:timeDate,timeLocal:localTime,markTime:new Date().getTime(),defaultPerson:this.state.defaultPerson,commentText:this.state.commentText,voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,anotherPersonComment:[]}
       this.setState({
       commentList:[person,...this.state.commentList],
+      backupCommentList:[...this.state.commentList],
       commentText:''
     },console.log(this.state.commentList))
     }
   }
 
   delComment(index){
-    let x=[...this.state.commentList];
-    x.splice(index,1)
+    let newCommentList=[...this.state.commentList];
+    newCommentList.splice(index,1)
     this.setState({
-      commentList:x
+      commentList:[...newCommentList],
+      backupCommentList:[...this.state.commentList],
     })
   }
   addThumb(index){
     let newCommentList=this.state.commentList;
     newCommentList[index].voteThumb+=1;
     this.setState({
-      commentList:newCommentList,
+      commentList:[...newCommentList],
+      backupCommentList:[...this.state.commentList],
     })
   }
 
@@ -334,7 +336,8 @@ export default class InputList extends Component{
     let newCommentList=this.state.commentList;
     newCommentList[index].voteLove+=1;
     this.setState({
-      commentList:newCommentList,
+      commentList:[...newCommentList],
+      backupCommentList:[...this.state.commentList],
     })
   }
 
@@ -342,21 +345,24 @@ export default class InputList extends Component{
     let newCommentList=this.state.commentList;
     newCommentList[index].voteSad+=1;
     this.setState({
-      commentList:newCommentList,
+      commentList:[...newCommentList],
+      backupCommentList:[...this.state.commentList],
     })
   }
   addAngry(index){
     let newCommentList=this.state.commentList;
     newCommentList[index].voteAngry+=1;
     this.setState({
-      commentList:newCommentList,
+      commentList:[...newCommentList],
+      backupCommentList:[...this.state.commentList],
     })
   }
   addSmile(index){
     let newCommentList=this.state.commentList;
     newCommentList[index].voteSmile+=1;
     this.setState({
-      commentList:newCommentList,
+      commentList:[...newCommentList],
+      backupCommentList:[...this.state.commentList],
     })
   }
   insideCommentChange(e){
@@ -374,7 +380,8 @@ export default class InputList extends Component{
   hindNetComment(){
     this.setState({
       netCommentDisplay:"none",
-      insideComment:""
+      insideComment:"",
+      netCommentText:'',
     })
   }
 
@@ -386,15 +393,49 @@ export default class InputList extends Component{
   }
 
   sendNetComment(index){
-    let newCommentList=[...this.state.commentList];
-    let timeDate=new Date().toLocaleDateString();
-    let localTime=new Date().toLocaleTimeString();
-    let person={timeDate:timeDate,timeLocal:localTime,defaultPerson:this.state.defaultPerson,commentText:this.state.netCommentText,voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0}
-    newCommentList[index].anotherPersonComment=[person,...newCommentList[index].anotherPersonComment];
+    if(this.state.netCommentText===''){
+      alert("Are you kidding me?")
+    }else{
+      let newCommentList=[...this.state.commentList];
+      let timeDate=new Date().toLocaleDateString();
+      let localTime=new Date().toLocaleTimeString();
+      let person={timeDate:timeDate,timeLocal:localTime,defaultPerson:this.state.defaultPerson,commentText:this.state.netCommentText,voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0}
+      newCommentList[index].anotherPersonComment=[person,...newCommentList[index].anotherPersonComment];
+      this.setState({
+        commentList:[...newCommentList],
+        backupCommentList:[...this.state.commentList],
+        insideComment:"",
+        netCommentText:"",
+      })
+    }
+  }
+
+  sortBy(e){
+
     this.setState({
-      commentList:newCommentList,
-      insideComment:"",
-      netCommentText:"",
-    },console.log(this.state.netCommentText[index].anotherPersonComment))
+      commentList:[...this.state.backupCommentList],
+    })
+
+    let newCommentList=[...this.state.commentList];
+    if(e.target.value==="Sorting by username"){
+    newCommentList= newCommentList.filter((item)=>{
+        return item.defaultPerson===this.state.defaultPerson;
+      })
+    }
+
+    if(e.target.value==="Sorting by new"){
+      newCommentList= newCommentList.sort((a,b)=>{
+        return a.markTime-b.markTime;
+      })
+    }
+
+    if(e.target.value==="Sorting by words"){
+      newCommentList.sort((a,b)=>{
+        return b.commentText.length-a.commentText.length;
+      })
+    }
+    this.setState({
+      commentList:[...newCommentList],
+    })
   }
 }
