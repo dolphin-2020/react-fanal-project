@@ -1,10 +1,15 @@
 import React from 'react'
-
-let Header=(props)=>{
+import styles from '../src/styles.jsx'
+let Header=()=>{
   return(
-    <div style={{textAlign:"center",width:"100%",height:"100px",backgroundColor:"lightblue",marginBottom:"15px"}}>
-    <h1 style={{color:"blue"}}>MySECIALMedia</h1>
-  </div>
+    <div style={styles.headDiv}>
+    <h1 style={styles.headText}>Dolphin's Assignment</h1>
+    <img src="../src/dolphin-icon.jpg" 
+      alt="" 
+      style={{width:"10%",paddingTop:"60px"}}
+    >
+    </img>
+    </div>
   )
 }
 

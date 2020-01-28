@@ -1,6 +1,11 @@
 import React,{Component,Fragment} from 'react'
 import store from '../src/store.jsx'
 import styles from '../src/styles.jsx'
+import NetCommList from '../src/netCommList.jsx'
+import Header from '../src/header.jsx'
+import HeaderInput from '../src/headerInput.jsx'
+import CommentArea from '../src/commentArea.jsx'
+
 export default class InputList extends Component{
   constructor(props){
     super(props);
@@ -22,58 +27,91 @@ export default class InputList extends Component{
     this.sendNetComment=this.sendNetComment.bind(this);
     this.sortBy=this.sortBy.bind(this);
     this.hidingComm=this.hidingComm.bind(this);
-this.showHidingComment=this.showHidingComment.bind(this);
-      
+    this.showHidingComment=this.showHidingComment.bind(this);
   }
 
   render(){
     return (
       <Fragment>
-      <div style={{display:this.state.netCommentDisplay,width:"400px",position:"fixed",top:"50%",left:"50%", transform: "translate(-50%, -50%)",zIndex:"100"}}>
-      <textarea 
-          placeholder="Enter your comment"
-          style={styles.textAreaNet}
-          value={this.state.insideComment}  
-          cols = "138" rows="19" 
-          onChange = {this.insideCommentChange}>
+      
+      {/* <div 
+          style={{display:this.state.netCommentDisplay,width:"400px",position:"fixed",top:"50%",left:"50%", transform: "translate(-50%, -50%)",zIndex:"100"}}
+        >
+         <textarea 
+           placeholder="Enter your comment"
+           style={styles.textAreaNet}
+           value={this.state.insideComment}  
+           cols = "138" rows="19" 
+           onChange = {this.insideCommentChange}>
           </textarea>
+
           <button 
             style={styles.hindNetComment}
             onClick={this.hindNetComment}
           >Cancel
           </button>
+
           <button 
             style={styles.netBtn}
             onClick={this.netBtn}
-          >Submit
+          >
+          Submit
           </button>
-      </div>
+        </div> */}
+      
+        <NetCommList
+          netCommentDisplay={this.state.netCommentDisplay}
+          insideComment={this.state.insideComment}
+          insideCommentChange={this.insideCommentChange}
+          hindNetComment={this.hindNetComment}
+          netBtn={this.netBtn}
+       /> 
+      
+      <Header/>
+      <HeaderInput
+        valChange={this.valChange}
+        register={this.state.register}
+        addToList={this.addToList}
+        selectVal={this.selectVal}
+        commentChange={this.commentChange}
+        commentText={this.state.commentText}
+        addComment={this.addComment}
+        sortBy={this.sortBy}
+        sortingBy={this.state.sortingBy}
+        showHidingComment={this.showHidingComment}
+        nameList={this.state.nameList}
+        defaultPerson={this.state.defaultPerson}
+     /> 
 
-      <div style={styles.headDiv}>
-      <h1 style={styles.headText}>Dolphin's Assignment</h1>
-      <img src="../src/dolphin-icon.jpg" alt="" style={{width:"10%",paddingTop:"60px"}}></img>
-      </div>
-      <main>
-      <div style={{width:"70%",margin:"auto"}}>
-        <input 
-          type="text" 
-          style={{width:"62%",height:"30px"}} 
-          placeholder="Please enter your name" onChange={this.valChange} value={this.state.register}
-        />
+
+{/*      
+
+ <div style={{width:"70%",margin:"auto"}}>
+          <input 
+            type="text" 
+            style={{width:"62%",height:"30px"}} 
+            placeholder="Please enter your name" 
+            onChange={this.valChange} 
+            value={this.state.register}
+          />
           
         <button 
           onClick={this.addToList} 
           type="submit" 
-          style={styles.addTodoListBtn}>Register</button>
-        <select onChange={this.selectVal} style={{width:"22%",height:"36px"}}>
-        { 
-          this.state.nameList.map((item,index)=>{
-            return <option 
-              key={index} 
-              value={item}>{item}
-            </option>
-          })
-        }
+          style={styles.addTodoListBtn}
+          >Register
+          </button>
+        <select 
+          onChange={this.selectVal} 
+          style={{width:"22%",height:"36px"}}>
+          { 
+            this.state.nameList.map((item,index)=>{
+              return <option 
+                key={index} 
+                value={item}>{item}
+              </option>
+            })
+          }
         </select>
         <br/>
         <textarea 
@@ -83,7 +121,7 @@ this.showHidingComment=this.showHidingComment.bind(this);
           cols = "140" rows="9" 
           onChange = {this.commentChange}>
           {this.state.commentText}
-          </textarea>
+        </textarea>
         <br/>
         <button 
           onClick = {this.addComment}
@@ -92,7 +130,8 @@ this.showHidingComment=this.showHidingComment.bind(this);
           Submit
           </button>
 
-          <select onChange={this.sortBy} style={{width:"20%",height:"36px",marginLeft:"50px"}}>
+          <select onChange={this.sortBy} 
+          style={styles.sortSelect}>
           { 
             this.state.sortingBy.map((item,index)=>{
               return <option 
@@ -107,120 +146,33 @@ this.showHidingComment=this.showHidingComment.bind(this);
            Show All Comment
           </button>
         </div>
+
+
+     
+         */}
+
+<CommentArea
+commentList={this.state.commentList}
+timeFormat={this.timeFormat}
+commentList={this.state.commentList}
+addThumb={this.addThumb}
+addLove={this.addLove}
+addSmile={this.addSmile}
+addAngry={this.addAngry}
+addSad={this.addSad}
+showAllComment={this.showAllComment}
+showNet={this.showNet}
+sendNetComment={this.sendNetComment}
+hidingComm={this.hidingComm}
+Hiding={this.state.Hiding}
+delComment={this.delComment}
+
+
+/>
+
         
-        <div style = {{width:"70%",margin:"auto"}}>
-          {this.state.commentList.map((item,index)=>{
-            return (
-              <div 
-              key = {new Date().getTime()+index} 
-              style = {{fontSize:"14px",margin:"10px 0px",boxShadow:"2px 2px 4px 2px #eee, -2px 2px 2px 2px #eee ",display:this.state.commentList[index].display}}>
-              
-              <p style={{backgroundColor:"lightgray"}}>{this.timeFormat(item.markTime)}</p>
-              {/* <img 
-                src = "../src/love.jpg" 
-                onClick = {this.delComment.bind(this,index)} 
-                style = {{width:"30px",height:"30px",marginRight:"5px"}}
-              > */}
-              <p style={{fontSize:"16px",color:"blue"}}>{item.defaultPerson}</p>
-              
-              <p style={{backgroundColor:"#eee"}}>{item.commentText}</p>
-              
-              <div style={{width:"90%",backgroundColor:"lightgray",margin:"auto",display:this.state.commentList[index].offOn}}>
-              {
-                this.state.commentList[index].anotherPersonComment.map((item,index)=>{
-                  return <div 
-                    key = {new Date().getTime()+index} 
-                    style = {styles.anotherPersonComment}>
-                    
-                    <p style={{backgroundColor:"lightgray"}}>{this.timeFormat(item.markTime)}</p>
-                    {/* <img 
-                      src = "../src/love.jpg" 
-                      onClick = {this.delComment.bind(this,index)} 
-                      style = {{width:"30px",height:"30px",marginRight:"5px"}}
-                    > */}
-                    <p style={{fontSize:"16px",color:"blue"}}>{item.defaultPerson}</p>
-                    
-                    <p style={{backgroundColor:"#eee"}}>{item.commentText}</p>
-                    </div>
-                })
-              }
-              </div>
-
-              <div>
-              <img 
-                src = "../src/thumb.jpg" 
-                onClick = {this.addThumb.bind(this,index)} 
-                style = {styles.addThumb}
-              />
-              <img 
-                src = "../src/love.jpg" 
-                onClick = {this.addLove.bind(this,index)} 
-                style = {styles.addThumb}
-              />
-              <img 
-                src = "../src/smil.jpg" 
-                onClick = {this.addSmile.bind(this,index)} 
-                style = {styles.addThumb}
-              />
-              <img 
-                src = "../src/argey.jpg" 
-                onClick = {this.addAngry.bind(this,index)} 
-                style = {styles.addThumb}
-              />
-              <img 
-                src = "../src/sad.jpg" 
-                onClick = {this.addSad.bind(this,index)} 
-                style = {styles.addThumb}
-              />
-               <img 
-                src = "../src/comment.jpg" 
-                onClick = {this.showAllComment.bind(this,index)} 
-                style = {styles.commImg}
-              />
-              
-              <button 
-                style={styles.showNet}
-                onClick={this.showNet}
-              >
-              {this.state.netCommentText===''? 'Please Enter Your Comment':this.state.netCommentText.slice(0,32)+"..."}
-              </button>
-            
-              <img src="../src/send.jpg"
-              onClick = {this.sendNetComment.bind(this,index)} 
-              style = {styles.send}               
-              />
-
-            <select onChange={this.hidingComm.bind(this,index)} 
-              style={{width:"18%",height:"38px",float:"right"}}>
-              { 
-                this.state.Hiding.map((item,index)=>{
-                  return <option 
-                    key={index} 
-                    value={item}>{item}
-                  </option>
-                })
-              }
-              </select>
-
-              <div style={styles.showVoteDiv}>
-                <label style={styles.label}>{item.voteThumb}</label>
-                <label style={styles.label}>{item.voteLove}</label>
-                <label style={styles.label}>{item.voteSmile}</label>
-                <label style={styles.label}>{item.voteAngry}</label>
-                <label style={styles.label}>{item.voteSad}</label>
-                <img 
-                src = "../src/minus.png" 
-                onClick = {this.delComment.bind(this,index)} 
-                style = {styles.delComment}
-              />
-              </div>
-        </div>
-             
-        </div>
-              )
-          })}
-        </div>
-        </main>
+      
+ 
       </Fragment>
     )
   }
@@ -330,7 +282,7 @@ this.showHidingComment=this.showHidingComment.bind(this);
       backupCommentList:[...this.state.commentList],
     })
   }
-  
+
   insideCommentChange(e){
     this.setState({
       insideComment:e.target.value,
