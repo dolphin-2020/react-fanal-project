@@ -33,32 +33,6 @@ export default class InputList extends Component{
   render(){
     return (
       <Fragment>
-      
-      {/* <div 
-          style={{display:this.state.netCommentDisplay,width:"400px",position:"fixed",top:"50%",left:"50%", transform: "translate(-50%, -50%)",zIndex:"100"}}
-        >
-         <textarea 
-           placeholder="Enter your comment"
-           style={styles.textAreaNet}
-           value={this.state.insideComment}  
-           cols = "138" rows="19" 
-           onChange = {this.insideCommentChange}>
-          </textarea>
-
-          <button 
-            style={styles.hindNetComment}
-            onClick={this.hindNetComment}
-          >Cancel
-          </button>
-
-          <button 
-            style={styles.netBtn}
-            onClick={this.netBtn}
-          >
-          Submit
-          </button>
-        </div> */}
-      
         <NetCommList
           netCommentDisplay={this.state.netCommentDisplay}
           insideComment={this.state.insideComment}
@@ -66,7 +40,6 @@ export default class InputList extends Component{
           hindNetComment={this.hindNetComment}
           netBtn={this.netBtn}
        /> 
-      
       <Header/>
       <HeaderInput
         valChange={this.valChange}
@@ -81,98 +54,25 @@ export default class InputList extends Component{
         showHidingComment={this.showHidingComment}
         nameList={this.state.nameList}
         defaultPerson={this.state.defaultPerson}
-     /> 
+      /> 
 
+      <CommentArea
+        commentList={this.state.commentList}
+        timeFormat={this.timeFormat}
+        addThumb={this.addThumb}
+        addLove={this.addLove}
+        addSmile={this.addSmile}
+        addAngry={this.addAngry}
+        addSad={this.addSad}
+        showAllComment={this.showAllComment}
+        showNet={this.showNet}
+        sendNetComment={this.sendNetComment}
+        hidingComm={this.hidingComm}
+        Hiding={this.state.Hiding}
+        delComment={this.delComment}
+        netCommentText={this.state.netCommentText}
+        />
 
-{/*      
-
- <div style={{width:"70%",margin:"auto"}}>
-          <input 
-            type="text" 
-            style={{width:"62%",height:"30px"}} 
-            placeholder="Please enter your name" 
-            onChange={this.valChange} 
-            value={this.state.register}
-          />
-          
-        <button 
-          onClick={this.addToList} 
-          type="submit" 
-          style={styles.addTodoListBtn}
-          >Register
-          </button>
-        <select 
-          onChange={this.selectVal} 
-          style={{width:"22%",height:"36px"}}>
-          { 
-            this.state.nameList.map((item,index)=>{
-              return <option 
-                key={index} 
-                value={item}>{item}
-              </option>
-            })
-          }
-        </select>
-        <br/>
-        <textarea 
-          placeholder={this.state.defaultPerson+"will give comment"}
-          style={{marginTop:"10px",width:"100%"}}
-          value={this.state.commentText}  
-          cols = "140" rows="9" 
-          onChange = {this.commentChange}>
-          {this.state.commentText}
-        </textarea>
-        <br/>
-        <button 
-          onClick = {this.addComment}
-          style={styles.addComment} 
-          type="button" placeholder="Please input comment">
-          Submit
-          </button>
-
-          <select onChange={this.sortBy} 
-          style={styles.sortSelect}>
-          { 
-            this.state.sortingBy.map((item,index)=>{
-              return <option 
-                key={index} 
-                value={item}>{item}
-              </option>
-            })
-          }
-          </select>
-
-          <button onClick={this.showHidingComment} style={styles.showHidingCommentBtn}>
-           Show All Comment
-          </button>
-        </div>
-
-
-     
-         */}
-
-<CommentArea
-commentList={this.state.commentList}
-timeFormat={this.timeFormat}
-commentList={this.state.commentList}
-addThumb={this.addThumb}
-addLove={this.addLove}
-addSmile={this.addSmile}
-addAngry={this.addAngry}
-addSad={this.addSad}
-showAllComment={this.showAllComment}
-showNet={this.showNet}
-sendNetComment={this.sendNetComment}
-hidingComm={this.hidingComm}
-Hiding={this.state.Hiding}
-delComment={this.delComment}
-
-
-/>
-
-        
-      
- 
       </Fragment>
     )
   }
