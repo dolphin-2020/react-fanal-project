@@ -121,14 +121,26 @@ export default class InputList extends Component{
     if(this.state.commentText===''){
       alert("Are you kidding me")
     }
-    if(this.state.commentText!=''){
+    if(this.state.commentText!==''){
       
-      let person={markTime:new Date().getTime(),defaultPerson:this.state.defaultPerson,commentText:this.state.commentText,display:"",offOn:"",voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0,anotherPersonComment:[]}
+      let person={
+        markTime:new Date().getTime(),
+        defaultPerson:this.state.defaultPerson,
+        commentText:this.state.commentText,
+        display:"",offOn:"",
+        voteLove:0,
+        voteThumb:0,
+        voteLove:0,
+        voteSmile:0,
+        voteAngry:0,
+        voteSad:0,
+        anotherPersonComment:[]
+      }
       this.setState({
       commentList:[person,...this.state.commentList],
-      backupCommentList:[...this.state.commentList],
+      backupCommentList:[person,...this.state.commentList],
       commentText:''
-    },console.log(this.state.commentList))
+    })
     }
   }
 
@@ -137,7 +149,7 @@ export default class InputList extends Component{
     newCommentList.splice(index,1)
     this.setState({
       commentList:[...newCommentList],
-      backupCommentList:[...this.state.commentList],
+      backupCommentList:[...newCommentList],
     })
   }
 
@@ -146,7 +158,7 @@ export default class InputList extends Component{
     newCommentList[index].voteThumb+=1;
     this.setState({
       commentList:[...newCommentList],
-      backupCommentList:[...this.state.commentList],
+      backupCommentList:[...newCommentList],
     })
   }
 
@@ -155,7 +167,7 @@ export default class InputList extends Component{
     newCommentList[index].voteLove+=1;
     this.setState({
       commentList:[...newCommentList],
-      backupCommentList:[...this.state.commentList],
+      backupCommentList:[...newCommentList],
     })
   }
 
@@ -164,7 +176,7 @@ export default class InputList extends Component{
     newCommentList[index].voteSad+=1;
     this.setState({
       commentList:[...newCommentList],
-      backupCommentList:[...this.state.commentList],
+      backupCommentList:[...newCommentList],
     })
   }
 
@@ -173,7 +185,7 @@ export default class InputList extends Component{
     newCommentList[index].voteAngry+=1;
     this.setState({
       commentList:[...newCommentList],
-      backupCommentList:[...this.state.commentList],
+      backupCommentList:[...newCommentLis],
     })
   }
   addSmile(index){
@@ -181,7 +193,7 @@ export default class InputList extends Component{
     newCommentList[index].voteSmile+=1;
     this.setState({
       commentList:[...newCommentList],
-      backupCommentList:[...this.state.commentList],
+      backupCommentList:[...newCommentList],
     })
   }
 
@@ -222,7 +234,7 @@ export default class InputList extends Component{
       newCommentList[index].anotherPersonComment=[person,...newCommentList[index].anotherPersonComment];
       this.setState({
         commentList:[...newCommentList],
-        backupCommentList:[...this.state.commentList],
+        backupCommentList:[...newCommentList],
         insideComment:"",
         netCommentText:"",
       })
@@ -278,7 +290,7 @@ export default class InputList extends Component{
     newCommentList[index].display="none";
     this.setState({
       commentList:[...newCommentList],
-      backupCommentList:[...this.state.commentList],
+      backupCommentList:[...newCommentList],
     })
   }
 
@@ -289,7 +301,7 @@ export default class InputList extends Component{
       }
       this.setState({
         commentList:[...newCommentList],
-        backupCommentList:[...this.state.commentList],
+        backupCommentList:[...newCommentList],
       })
   }
 
@@ -298,7 +310,7 @@ export default class InputList extends Component{
     newCommentList[index].offOn===""?newCommentList[index].offOn="none":newCommentList[index].offOn="";
     this.setState({
       commentList:[...newCommentList],
-      backupCommentList:[...this.state.commentList],
+      backupCommentList:[...newCommentList],
     })
   }
 

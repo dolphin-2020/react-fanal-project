@@ -79,17 +79,10 @@ class CommentArea extends Component{
           style = {styles.send}               
           />
 
-        <select onChange={()=>{this.props.hidingComm(index)}} 
-          style={{width:"18%",height:"38px",float:"right"}}>
-          { 
-            this.props.Hiding.map((item,index)=>{
-              return <option 
-                key={index} 
-                value={item}>{item}
-              </option>
-            })
-          }
-          </select>
+        <button onClick={()=>{this.props.hidingComm(index)}} 
+          style={{width:"18%",height:"30px",float:"right",borderRadius:"20px"}}>
+          Hiding Comment
+          </button>
 
           <div style={styles.showVoteDiv}>
             <label style={styles.label}>{item.voteThumb}</label>

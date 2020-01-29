@@ -25,7 +25,7 @@ class NetCommList extends Component{
             style={styles.netBtn}
             onClick={this.props.netBtn}
           >
-          Submit
+          OK
         </button>
       </div>
     )

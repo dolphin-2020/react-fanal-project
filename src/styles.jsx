@@ -6,12 +6,14 @@ let styles = {
   },
   hindNetComment: {
     width: "50%",
+    height:"30px",
     float: "left",
     backgroundColor: "#06f",
     color: "white"
   },
   netBtn: {
     width: "50%",
+    height:"30px",
     float: "right",
     backgroundColor: "#06f",
     color: "white"
@@ -49,7 +51,7 @@ let styles = {
   },
   anotherPersonComment: {
     fontSize: "14px",
-    margin: "10px 0px",
+    margin: "20px 20px",
     boxShadow: "2px 2px 4px 2px #eee, -2px 2px 2px 2px #eee "
   },
   addThumb: {
