@@ -54,14 +54,15 @@ let styles = {
     margin: "20px 20px",
     boxShadow: "2px 2px 4px 2px #eee, -2px 2px 2px 2px #eee "
   },
+  commVoteNum:{width:"20px",height:"20px"},
   addThumb: {
     width: "30px",
     height: "30px",
     marginRight: "5px"
   },
   commImg: {
-    width: "40px",
-    height: "40px",
+    width: "30px",
+    height: "25px",
     marginRight: "5px",
     float: "right"
   },
@@ -74,6 +75,7 @@ let styles = {
     position: "relative",
     top: "-10px"
   },
+  hidingComm:{width:"18%",height:"30px",float:"right",borderRadius:"20px",marginRight:"20px"},
   send: {
     width: "30px",
     height: "30px",
@@ -88,7 +90,7 @@ let styles = {
   label: {
     fontSize: "25px",
     color: "orange",
-    margin: "5px 11px"
+    margin: "5px 16px"
   },
   delComment: {
     width: "30px",

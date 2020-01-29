@@ -221,7 +221,7 @@ export default class InputList extends Component{
     this.setState({
       netCommentText:this.state.insideComment,
       netCommentDisplay:"none"
-    },console.log(this.state.netCommentText))
+    })
   }
 
   sendNetComment(index){

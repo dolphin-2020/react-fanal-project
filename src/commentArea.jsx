@@ -37,32 +37,32 @@ class CommentArea extends Component{
 
           <div>
           <img 
-            src = "../src/thumb.jpg" 
+            src = "../src/img/thumb.png" 
             onClick = {()=>{this.props.addThumb(index)}} 
             style = {styles.addThumb}
           />
           <img 
-            src = "../src/love.jpg" 
+            src = "../src/img/love.png" 
             onClick = {()=>{this.props.addLove(index)}} 
             style = {styles.addThumb}
           />
           <img 
-            src = "../src/smil.jpg" 
+            src = "../src/img/smile.png" 
             onClick = {()=>{this.props.addSmile(index)}}
             style = {styles.addThumb}
           />
           <img 
-            src = "../src/argey.jpg" 
+            src = "../src/img/angry.png" 
             onClick = {()=>{this.props.addAngry(index)}} 
             style = {styles.addThumb}
           />
           <img 
-            src = "../src/sad.jpg" 
+            src = "../src/img/sad.png" 
             onClick = {()=>{this.props.addSad(index)} }
             style = {styles.addThumb}
           />
            <img 
-            src = "../src/comment.jpg" 
+            src = "../src/img/comment.png" 
             onClick = {()=>{this.props.showAllComment(index)}} 
             style = {styles.commImg}
           />
@@ -74,29 +74,55 @@ class CommentArea extends Component{
           {this.props.netCommentText===''? 'Please Enter Your Comment':this.props.netCommentText.slice(0,32)+"..."}
           </button>
         
-          <img src="../src/send.jpg"
+          <img src="../src/img/send.png"
           onClick = {()=>{this.props.sendNetComment(index)}} 
           style = {styles.send}               
           />
 
         <button onClick={()=>{this.props.hidingComm(index)}} 
-          style={{width:"18%",height:"30px",float:"right",borderRadius:"20px"}}>
+          style={styles.hidingComm}>
           Hiding Comment
           </button>
-
+       
           <div style={styles.showVoteDiv}>
-            <label style={styles.label}>{item.voteThumb}</label>
-            <label style={styles.label}>{item.voteLove}</label>
-            <label style={styles.label}>{item.voteSmile}</label>
-            <label style={styles.label}>{item.voteAngry}</label>
-            <label style={styles.label}>{item.voteSad}</label>
+            <label 
+              style={styles.label}>
+              <img style={styles.commVoteNum} 
+              src="../src/img/thumb.png"
+              /> {item.voteThumb}
+            </label>
+            <label 
+              style={styles.label}>
+              <img style={styles.commVoteNum} 
+              src="../src/img/love.png"
+              /> 
+              {item.voteLove}
+            </label>
+            <label 
+              style={styles.label}>
+              <img style={styles.commVoteNum} 
+              src="../src/img/smile.png"
+              /> {item.voteSmile}
+            </label>
+            <label 
+              style={styles.label}>
+              <img style={styles.commVoteNum} 
+              src="../src/img/angry.png"
+              /> {item.voteAngry}
+            </label>
+            <label 
+              style={styles.label}>
+              <img style={styles.commVoteNum} 
+              src="../src/img/sad.png"
+              /> {item.voteSad}
+            </label>
             <img 
-            src = "../src/minus.png" 
+            src = "../src/img/delete.png" 
             onClick = {()=>{this.props.delComment(index)}} 
             style = {styles.delComment}
           />
           </div>
-    </div>
+      </div>
          
     </div>
           )
