@@ -87,6 +87,7 @@ export default class InputList extends Component{
         Hiding={this.state.Hiding}
         delComment={this.delComment}
         netCommentText={this.state.netCommentText}
+        commentList={this.state.commentList}
         />
 
       </Fragment>

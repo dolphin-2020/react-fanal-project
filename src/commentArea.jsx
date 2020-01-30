@@ -62,7 +62,7 @@ class CommentArea extends Component{
             style = {styles.addThumb}
           />
            <img 
-            src = "../src/img/comment.png" 
+            src = {this.props.commentList[index].offOn===""?"../src/img/commentEmpty.png":"../src/img/comment.png"}
             onClick = {()=>{this.props.showAllComment(index)}} 
             style = {styles.commImg}
           />
@@ -84,18 +84,18 @@ class CommentArea extends Component{
           Hiding Comment
           </button>
        
-          <div style={styles.showVoteDiv}>
-            <label style={styles.label}><img style={styles.commVoteNum} src="../src/img/thumb.png"/> {item.voteThumb}</label>
-            <label style={styles.label}><img style={styles.commVoteNum} src="../src/img/love.png"/> {item.voteLove}</label>
-            <label style={styles.label}><img style={styles.commVoteNum} src="../src/img/smile.png"/> {item.voteSmile}</label>
-            <label style={styles.label}><img style={styles.commVoteNum} src="../src/img/angry.png"/> {item.voteAngry}</label>
-            <label style={styles.label}><img style={styles.commVoteNum} src="../src/img/sad.png"/> {item.voteSad}</label>
-            <img 
-              src = "../src/img/delete.png" 
-              onClick = {()=>{this.props.delComment(index)}} 
-              style = {styles.delComment}
-            />
-          </div>
+        <div style={styles.showVoteDiv}>
+          <label style={styles.label}><img style={styles.commVoteNum} src="../src/img/thumb.png"/> {item.voteThumb}</label>
+          <label style={styles.label}><img style={styles.commVoteNum} src="../src/img/love.png"/> {item.voteLove}</label>
+          <label style={styles.label}><img style={styles.commVoteNum} src="../src/img/smile.png"/> {item.voteSmile}</label>
+          <label style={styles.label}><img style={styles.commVoteNum} src="../src/img/angry.png"/> {item.voteAngry}</label>
+          <label style={styles.label}><img style={styles.commVoteNum} src="../src/img/sad.png"/> {item.voteSad}</label>
+          <img 
+            src = "../src/img/delete.png" 
+            onClick = {()=>{this.props.delComment(index)}} 
+            style = {styles.delComment}
+          />
+        </div>
 
         </div>
          

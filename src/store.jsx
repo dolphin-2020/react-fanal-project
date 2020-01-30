@@ -17,7 +17,7 @@ let store = {
       markTime: 1580336599911,
       defaultPerson: "Dolphin",
       headImg:"../src/img/head01.jpg",
-      commentText: "Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
+      commentText: "Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
       display: "",
       offOn: "",
       voteLove: 0,

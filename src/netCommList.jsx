@@ -20,7 +20,7 @@ class NetCommList extends Component{
             onClick={this.props.hindNetComment}
           >Cancel
           </button>
-  
+
           <button 
             style={styles.netBtn}
             onClick={this.props.netBtn}
