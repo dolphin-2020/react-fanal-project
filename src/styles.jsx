@@ -37,7 +37,8 @@ let styles = {
     width: "100px",
     height: "100px",
     borderRadius: "90px",
-    float: "left",
+position:"absolute",
+left:"100px",
     border: "4px solid lightGray",
     marginLeft: "100px"
   },

@@ -109,8 +109,8 @@ export default class InputList extends Component{
     if(this.state.register!=''){
       let newPerson={name:this.state.register,headImg:this.state.defaultHeadImg};
       this.setState(
-        {/////////////////////////////////////////////////////////////
-          nameList:[newPerson,...this.state.nameList],///////////////////
+        {
+          nameList:[newPerson,...this.state.nameList],
           register:''
         }
       )
