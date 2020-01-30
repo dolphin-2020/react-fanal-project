@@ -12,31 +12,20 @@ class HeaderInput extends Component{
         onChange={this.props.valChange} 
         value={this.props.register}
       />
-      
+      <button type="submit" style={styles.addHeaderImgListBtn} onClick={this.props.showPhoto}>--header photo--</button>
       <button 
         onClick={this.props.addToList} 
         type="submit" 
         style={styles.addTodoListBtn}
         >Register
         </button>
-      <select 
-        onChange={this.props.selectVal} 
-        style={{width:"22%",height:"36px"}}>
-        { 
-          this.props.nameList.map((item,index)=>{
-            return <option 
-              key={index} 
-              value={item}>{item}
-            </option>
-          })
-        }
-      </select>
+      
       <br/>
       <textarea 
         placeholder={this.props.defaultPerson+"will give comment"}
-        style={{marginTop:"10px",width:"100%"}}
+        style={{marginTop:"10px",width:"99%"}}
         value={this.props.commentText}  
-        cols = "140" rows="9" 
+        cols = "138" rows="9" 
         onChange = {this.props.commentChange}>
         {this.props.commentText}
       </textarea>
@@ -65,6 +54,19 @@ class HeaderInput extends Component{
           style={styles.showHidingCommentBtn}>
           Show All Comment
         </button>
+
+        <select 
+        onChange={this.props.selectVal} 
+        style={{width:"22%",height:"36px",float:"right"}}>
+        { 
+          this.props.nameList.map((item,index)=>{
+            return <option 
+              key={index} 
+              value={item}>{item}
+            </option>
+          })
+        }
+      </select>
       </div>
     )
   }

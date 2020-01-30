@@ -4,7 +4,7 @@ import NetCommList from '../src/netCommList.jsx'
 import Header from '../src/header.jsx'
 import HeaderInput from '../src/headerInput.jsx'
 import CommentArea from '../src/commentArea.jsx'
-
+import IconChoose from '../src/iconChoose.jsx'
 export default class InputList extends Component{
   constructor(props){
     super(props);
@@ -29,12 +29,20 @@ export default class InputList extends Component{
     this.showHidingComment=this.showHidingComment.bind(this);
     this.showAllComment=this.showAllComment.bind(this);
     this.delComment=this.delComment.bind(this);
+    this.showPhoto=this.showPhoto.bind(this);
+    this.chooseImg=this.chooseImg.bind(this);
+    this.disappear=this.disappear.bind(this);
   }
 
   render(){
     return (
       <Fragment>
-
+        <IconChoose
+          chooseHeader={this.state.chooseHeader}
+          darkBackground={this.state.darkBackground}
+          chooseImg={this.chooseImg}
+          disappear={this.disappear}
+        />
         <NetCommList
           netCommentDisplay={this.state.netCommentDisplay}
           insideComment={this.state.insideComment}
@@ -57,6 +65,7 @@ export default class InputList extends Component{
         showHidingComment={this.showHidingComment}
         nameList={this.state.nameList}
         defaultPerson={this.state.defaultPerson}
+        showPhoto={this.showPhoto}
       /> 
 
       <CommentArea
@@ -185,9 +194,10 @@ export default class InputList extends Component{
     newCommentList[index].voteAngry+=1;
     this.setState({
       commentList:[...newCommentList],
-      backupCommentList:[...newCommentLis],
-    })
+      backupCommentList:[...newCommentList],
+    },console.log(this.state.commentList[index].voteAngry))
   }
+  
   addSmile(index){
     let newCommentList=[...this.state.commentList];
     newCommentList[index].voteSmile+=1;
@@ -230,7 +240,7 @@ export default class InputList extends Component{
     }else{
       let newCommentList=[...this.state.commentList];
       let markTime=new Date().getTime();
-      let person={markTime:markTime,defaultPerson:this.state.defaultPerson,commentText:this.state.netCommentText,voteLove:0,voteThumb:0,voteLove:0,voteSmile:0,voteAngry:0,voteSad:0}
+      let person={markTime:markTime,defaultPerson:this.state.defaultPerson,commentText:this.state.netCommentText,voteLove:0,voteThumb:0,voteSmile:0,voteAngry:0,voteSad:0}
       newCommentList[index].anotherPersonComment=[person,...newCommentList[index].anotherPersonComment];
       this.setState({
         commentList:[...newCommentList],
@@ -242,7 +252,6 @@ export default class InputList extends Component{
   }
 
   sortBy(e){
-
     this.setState({
       commentList:[...this.state.backupCommentList],
     })
@@ -273,8 +282,8 @@ export default class InputList extends Component{
       this.setState({
         commentList:[...newCommentList],
       })
-
     }
+
     if(e.target.value==="Sorting by thumb votes"){
       newCommentList= newCommentList.sort((a,b)=>{
         return b.voteThumb-a.voteThumb;
@@ -336,5 +345,26 @@ export default class InputList extends Component{
     if(diffTime>=week){
       return new Date(time);
     }
+  }
+
+  showPhoto(){
+    this.setState({
+        darkBackground:"",
+        chooseHeader:"",
+    })
+  }
+
+  chooseImg(e){
+    this.setState({
+      darkBackground:"none",
+      chooseHeader:"none",
+    })
+  }
+
+  disappear(){
+    this.setState({
+      darkBackground:"none",
+      chooseHeader:"none",
+    })
   }
 }

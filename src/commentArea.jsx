@@ -85,46 +85,21 @@ class CommentArea extends Component{
           </button>
        
           <div style={styles.showVoteDiv}>
-            <label 
-              style={styles.label}>
-              <img style={styles.commVoteNum} 
-              src="../src/img/thumb.png"
-              /> {item.voteThumb}
-            </label>
-            <label 
-              style={styles.label}>
-              <img style={styles.commVoteNum} 
-              src="../src/img/love.png"
-              /> 
-              {item.voteLove}
-            </label>
-            <label 
-              style={styles.label}>
-              <img style={styles.commVoteNum} 
-              src="../src/img/smile.png"
-              /> {item.voteSmile}
-            </label>
-            <label 
-              style={styles.label}>
-              <img style={styles.commVoteNum} 
-              src="../src/img/angry.png"
-              /> {item.voteAngry}
-            </label>
-            <label 
-              style={styles.label}>
-              <img style={styles.commVoteNum} 
-              src="../src/img/sad.png"
-              /> {item.voteSad}
-            </label>
+            <label style={styles.label}><img style={styles.commVoteNum} src="../src/img/thumb.png"/> {item.voteThumb}</label>
+            <label style={styles.label}><img style={styles.commVoteNum} src="../src/img/love.png"/> {item.voteLove}</label>
+            <label style={styles.label}><img style={styles.commVoteNum} src="../src/img/smile.png"/> {item.voteSmile}</label>
+            <label style={styles.label}><img style={styles.commVoteNum} src="../src/img/angry.png"/> {item.voteAngry}</label>
+            <label style={styles.label}><img style={styles.commVoteNum} src="../src/img/sad.png"/> {item.voteSad}</label>
             <img 
-            src = "../src/img/delete.png" 
-            onClick = {()=>{this.props.delComment(index)}} 
-            style = {styles.delComment}
-          />
+              src = "../src/img/delete.png" 
+              onClick = {()=>{this.props.delComment(index)}} 
+              style = {styles.delComment}
+            />
           </div>
-      </div>
+
+        </div>
          
-    </div>
+      </div>
           )
       })}
     </div>

@@ -1,4 +1,20 @@
 let styles = {
+  headImg: {
+    width: "20%",
+  },
+  chooseImg: {
+    width: "14%",
+    height: "400px",
+    float: "right",
+    display: "inlineBlock",
+  },
+  leftDecoration:{
+    marginTop:"100px",
+    width:"14%",
+    float:"left",
+    backgroundColor:"gray",
+    height:"300px",
+  },
   textAreaNet: {
     marginTop: "10px",
     width: "100%",
@@ -6,21 +22,21 @@ let styles = {
   },
   hindNetComment: {
     width: "50%",
-    height:"30px",
+    height: "30px",
     float: "left",
     backgroundColor: "#06f",
     color: "white"
   },
   netBtn: {
     width: "50%",
-    height:"30px",
+    height: "30px",
     float: "right",
     backgroundColor: "#06f",
     color: "white"
   },
   headDiv: {
     width: "100%",
-    height: "100px",
+    height: "60px",
     backgroundColor: "lightblue",
     marginBottom: "15px"
   },
@@ -28,13 +44,17 @@ let styles = {
     margin: "auto",
     textAlign: "center",
     color: "#06f",
-    marginTop: "20px"
   },
   addTodoListBtn: {
-    width: "15%",
+    width: "18%",
     height: "36px",
     backgroundColor: "#06f",
-    color: "white"
+    color: "white",
+    float:"right"
+  },
+  addHeaderImgListBtn: {
+    width: "18%",
+    height: "36px",
   },
   addComment: {
     width: "100px",
@@ -54,7 +74,10 @@ let styles = {
     margin: "20px 20px",
     boxShadow: "2px 2px 4px 2px #eee, -2px 2px 2px 2px #eee "
   },
-  commVoteNum:{width:"20px",height:"20px"},
+  commVoteNum: {
+    width: "20px",
+    height: "20px"
+  },
   addThumb: {
     width: "30px",
     height: "30px",
@@ -75,7 +98,13 @@ let styles = {
     position: "relative",
     top: "-10px"
   },
-  hidingComm:{width:"18%",height:"30px",float:"right",borderRadius:"20px",marginRight:"20px"},
+  hidingComm: {
+    width: "18%",
+    height: "30px",
+    float: "right",
+    borderRadius: "20px",
+    marginRight: "20px"
+  },
   send: {
     width: "30px",
     height: "30px",
@@ -98,6 +127,10 @@ let styles = {
     float: "right"
   },
 
-  sortSelect:{width:"20%",height:"36px",marginLeft:"50px"},
+  sortSelect: {
+    width: "20%",
+    height: "36px",
+    marginLeft: "50px"
+  },
 }
 export default styles;
