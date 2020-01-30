@@ -40,8 +40,8 @@ class IconChoose extends Component{
       </div> 
 
       <div style={styles.leftDecoration}>
-      <img src="../src/img/fly.jpg" style={{width:"100%",filter: "grayscale(100%)"}}/>
-      <img src="../src/img/leftBar.jpg" style={{width:"100%",filter: "grayscale(60%)"}}/>
+        <img src="../src/img/fly.jpg" style={{width:"100%",filter: "grayscale(100%)"}}/>
+        <img src="../src/img/leftBar.jpg" style={{width:"100%",filter: "grayscale(60%)"}}/>
         <img src="../src/img/walk.jpg" style={{width:"100%"}}/>
       </div>
       </Fragment>

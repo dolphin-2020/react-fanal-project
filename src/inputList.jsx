@@ -37,9 +37,10 @@ export default class InputList extends Component{
   render(){
     return (
       <Fragment>
-            <Header
-        defaultName={this.state.defaultPerson}
-      />
+        <Header
+          defaultName={this.state.defaultPerson}
+          defaultHeadImg={this.state.defaultHeadImg}
+        />
 
         <IconChoose
           chooseHeader={this.state.chooseHeader}

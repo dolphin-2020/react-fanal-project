@@ -3,18 +3,16 @@ let styles = {
     width: "20%",
   },
   chooseImg: {
-    marginTop:"75px",
     width: "14%",
     height: "400px",
     float: "right",
     display: "inlineBlock",
   },
-  leftDecoration:{
-    marginTop:"75px",
-    width:"14%",
-    float:"left",
-    backgroundColor:"gray",
-    height:"300px",
+  leftDecoration: {
+    width: "14%",
+    float: "left",
+    backgroundColor: "gray",
+    height: "300px",
   },
   textAreaNet: {
     marginTop: "10px",
@@ -35,12 +33,20 @@ let styles = {
     backgroundColor: "#06f",
     color: "white"
   },
+  headShowImg: {
+    width: "100px",
+    height: "100px",
+    borderRadius: "90px",
+    float: "left",
+    border: "4px solid lightGray",
+    marginLeft: "100px"
+  },
   headDiv: {
     width: "100%",
-    height: "60px",
+    height: "100px",
     backgroundColor: "#06f",
     marginBottom: "15px",
-    color:"white",
+    color: "white",
   },
   headText: {
     margin: "auto",
@@ -51,7 +57,7 @@ let styles = {
     height: "36px",
     backgroundColor: "#06f",
     color: "white",
-    float:"right"
+    float: "right"
   },
   addHeaderImgListBtn: {
     width: "18%",
