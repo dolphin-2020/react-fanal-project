@@ -62,7 +62,7 @@ class HeaderInput extends Component{
           this.props.nameList.map((item,index)=>{
             return <option 
               key={index} 
-              value={item}>{item}
+              value={item.name}>{item.name}
             </option>
           })
         }

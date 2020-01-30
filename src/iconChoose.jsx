@@ -6,7 +6,7 @@ class IconChoose extends Component{
     return(
       
       <Fragment>
-      <div style={{display:this.props.chooseHeader,width:"30%",position:"fixed",top:"50%",left:"50%", transform: "translate(-50%, -50%)",zIndex:"100",backgroundColor:"lightgray",padding:"10px"}} onClick={this.props.chooseImg}>
+      <div onClick={this.props.chooseImg} style={{display:this.props.chooseHeader,width:"30%",position:"fixed",top:"50%",left:"50%", transform: "translate(-50%, -50%)",zIndex:"100",backgroundColor:"lightgray",padding:"10px"}}>
         <img src="../src/img/head01.jpg" style={styles.headImg}/>
         <img src="../src/img/head02.jpg" style={styles.headImg}/>
         <img src="../src/img/head03.jpg" style={styles.headImg}/>
@@ -35,14 +35,13 @@ class IconChoose extends Component{
       </div>
      <div onClick={this.props.disappear} style={{display:this.props.darkBackground,width:"100%",height:"800px",backgroundColor:"#000",opacity:"0.7",position:"fixed",top:"50%",left:"50%", transform: "translate(-50%, -50%)"}}></div>
       
-        {/* <div style={styles.chooseImg}
+      <div style={styles.chooseImg}>
+        <img src="../src/img/goodView.jpg" style={{width:"100%",height:"500px"}}/>
+      </div> 
 
-      >
-      
-      </div> */}
       <div style={styles.leftDecoration}>
-      <img src="../src/img/fly.jpg" style={{width:"100%"}}/>
-      <img src="../src/img/leftBar.jpg" style={{width:"100%"}}/>
+      <img src="../src/img/fly.jpg" style={{width:"100%",filter: "grayscale(100%)"}}/>
+      <img src="../src/img/leftBar.jpg" style={{width:"100%",filter: "grayscale(60%)"}}/>
         <img src="../src/img/walk.jpg" style={{width:"100%"}}/>
       </div>
       </Fragment>

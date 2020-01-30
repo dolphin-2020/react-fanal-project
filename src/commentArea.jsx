@@ -15,7 +15,7 @@ class CommentArea extends Component{
           key = {new Date().getTime()+index} 
           style = {{fontSize:"14px",margin:"10px 0px",boxShadow:"2px 2px 4px 2px #eee, -2px 2px 2px 2px #eee ",display:this.props.commentList[index].display}}>
           <p style={{backgroundColor:"lightgray"}}>{this.props.timeFormat(item.markTime)}</p>
-          <p style={{fontSize:"16px",color:"blue"}}>{item.defaultPerson}</p>
+          <p style={{fontSize:"16px",color:"blue"}}><img src={item.headImg} style={{width:"25px"}}/> {item.defaultPerson}</p>
           
           <p style={{backgroundColor:"#eee"}}>{item.commentText}</p>
           
@@ -27,7 +27,7 @@ class CommentArea extends Component{
                 style = {styles.anotherPersonComment}>
                 
                 <p style={{backgroundColor:"lightgray"}}>{this.props.timeFormat(item.markTime)}</p>
-                <p style={{fontSize:"16px",color:"blue"}}>{item.defaultPerson}</p>
+                <p style={{fontSize:"16px",color:"blue"}}><img src={item.headImg} style={{width:"25px"}}/> {item.defaultPerson}</p>
                 
                 <p style={{backgroundColor:"#eee"}}>{item.commentText}</p>
                 </div>

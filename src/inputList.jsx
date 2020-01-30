@@ -37,6 +37,10 @@ export default class InputList extends Component{
   render(){
     return (
       <Fragment>
+            <Header
+        defaultName={this.state.defaultPerson}
+      />
+
         <IconChoose
           chooseHeader={this.state.chooseHeader}
           darkBackground={this.state.darkBackground}
@@ -50,7 +54,6 @@ export default class InputList extends Component{
           hindNetComment={this.hindNetComment}
           netBtn={this.netBtn}
        /> 
-      <Header/>
 
       <HeaderInput
         valChange={this.valChange}
@@ -103,19 +106,28 @@ export default class InputList extends Component{
       alert("Are you kidding me?")
     }
     if(this.state.register!=''){
+      let newPerson={name:this.state.register,headImg:this.state.defaultHeadImg};
       this.setState(
-        {
-          nameList:[this.state.register,...this.state.nameList],
+        {/////////////////////////////////////////////////////////////
+          nameList:[newPerson,...this.state.nameList],///////////////////
           register:''
         }
       )
     }
   }
-  
+  //////////////////////////////////////////////////////////
   selectVal(e){
+    let newNameList=[...this.state.nameList];
+    let img="../src/img/defaultHeadImg.png";
+    for(let i=0;i<newNameList.length;i++){
+      if(newNameList[i].name===e.target.value){
+        img=newNameList[i].headImg;
+      }
+    }
     this.setState(
       {
-        defaultPerson:e.target.value
+        defaultPerson:e.target.value,
+        defaultHeadImg:img,
       }
     )
   }
@@ -135,11 +147,11 @@ export default class InputList extends Component{
       let person={
         markTime:new Date().getTime(),
         defaultPerson:this.state.defaultPerson,
+        headImg:this.state.defaultHeadImg,
         commentText:this.state.commentText,
         display:"",offOn:"",
         voteLove:0,
         voteThumb:0,
-        voteLove:0,
         voteSmile:0,
         voteAngry:0,
         voteSad:0,
@@ -216,6 +228,8 @@ export default class InputList extends Component{
   showNet(){
     this.setState({
       netCommentDisplay:"",
+      darkBackground:"",
+
     })
   }
 
@@ -224,13 +238,15 @@ export default class InputList extends Component{
       netCommentDisplay:"none",
       insideComment:"",
       netCommentText:'',
+      darkBackground:"none",
     })
   }
 
   netBtn(){
     this.setState({
       netCommentText:this.state.insideComment,
-      netCommentDisplay:"none"
+      netCommentDisplay:"none",
+      darkBackground:"none",
     })
   }
 
@@ -240,7 +256,7 @@ export default class InputList extends Component{
     }else{
       let newCommentList=[...this.state.commentList];
       let markTime=new Date().getTime();
-      let person={markTime:markTime,defaultPerson:this.state.defaultPerson,commentText:this.state.netCommentText,voteLove:0,voteThumb:0,voteSmile:0,voteAngry:0,voteSad:0}
+      let person={markTime:markTime,defaultPerson:this.state.defaultPerson,headImg:this.state.defaultHeadImg,commentText:this.state.netCommentText,voteLove:0,voteThumb:0,voteSmile:0,voteAngry:0,voteSad:0}
       newCommentList[index].anotherPersonComment=[person,...newCommentList[index].anotherPersonComment];
       this.setState({
         commentList:[...newCommentList],
@@ -355,9 +371,11 @@ export default class InputList extends Component{
   }
 
   chooseImg(e){
+    console.log(e.target.src)
     this.setState({
       darkBackground:"none",
       chooseHeader:"none",
+      defaultHeadImg:e.target.src,
     })
   }
 
@@ -367,4 +385,5 @@ export default class InputList extends Component{
       chooseHeader:"none",
     })
   }
+
 }
