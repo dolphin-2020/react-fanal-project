@@ -252,11 +252,12 @@ export default class InputList extends Component{
     })
   }
 
-  sendNetComment(index){
+  sendNetComment(index){////////////////////////////////
     if(this.state.netCommentText===''){
       alert("Are you kidding me?")
     }else{
       let newCommentList=[...this.state.commentList];
+      newCommentList[index].offOn=""
       let markTime=new Date().getTime();
       let person={markTime:markTime,defaultPerson:this.state.defaultPerson,headImg:this.state.defaultHeadImg,commentText:this.state.netCommentText,voteLove:0,voteThumb:0,voteSmile:0,voteAngry:0,voteSad:0}
       newCommentList[index].anotherPersonComment=[person,...newCommentList[index].anotherPersonComment];

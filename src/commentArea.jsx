@@ -71,7 +71,7 @@ class CommentArea extends Component{
             style={styles.showNet}
             onClick={this.props.showNet}
           >
-          {this.props.netCommentText===''? 'Please Enter Your Comment':this.props.netCommentText.slice(0,32)+"..."}
+          Please Enter Your Comment
           </button>
         
           <img src="../src/img/send.png"
