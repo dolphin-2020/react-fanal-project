@@ -4,17 +4,29 @@ let store = {
   darkBackground:"none",
   chooseHeader:"none",
   register: '',
+  commentText: '',
+
+  sortingBy: [
+    "Sorting by new",
+    "Sorting by words",
+    "Sorting by username",
+    "Sorting by thumb votes",
+  ],
+  insideComment: '',
+  //netCommentText: '',
+
   nameList: [
     {name:"Dolphin",headImg:"../src/img/head01.jpg"},
     {name:"Jot",headImg:"../src/img/head12.jpg"},
     {name:"Kana",headImg:"../src/img/head16.jpg"},
     {name:"Lia",headImg:"../src/img/head10.jpg"},
   ],
-  commentText: '',
 
   commentList: [
     {
       markTime: 1580433801310,
+      netCommentDisplay: "none",
+      netCommentText:"",
       defaultPerson: "Dolphin",
       headImg:"../src/img/head01.jpg",
       commentText: "Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
@@ -43,6 +55,8 @@ let store = {
     },
     {
       markTime: 1580433801310,
+      netCommentDisplay: "none",
+      netCommentText:"",
       defaultPerson: "Kana",
       headImg:"../src/img/head16.jpg",
       commentText: "Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
@@ -63,12 +77,15 @@ let store = {
         {
           markTime: 1580433801310,
           defaultPerson: "Lia",
+          headImg:"../src/img/head10.jpg",
           commentText: "Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
         },
       ]
     },
     {
       markTime: 1580433801310,
+      netCommentDisplay: "none",
+      netCommentText:"",
       defaultPerson: "Jot",
       headImg:"../src/img/head12.jpg",
       commentText: "Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
@@ -96,6 +113,8 @@ let store = {
     },
     {
       markTime: 1580433801310,
+      netCommentDisplay: "none",
+      netCommentText:"",
       defaultPerson: "Lia",
       headImg:"../src/img/head10.jpg",
       commentText: "Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
@@ -118,7 +137,7 @@ let store = {
     },
     {
       markTime: 1580433801310,
-      defaultPerson: "Kana",
+      netCommentDisplay: "none",
       headImg:"../src/img/head16.jpg",
       commentText: "Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM  your GitHub URL for this project.",
       display: "",
@@ -139,18 +158,11 @@ let store = {
     },
   ],
 
-  sortingBy: [
-    "Sorting by new",
-    "Sorting by words",
-    "Sorting by username",
-    "Sorting by thumb votes",
-  ],
-  insideComment: '',
-  netCommentDisplay: "none",
-  netCommentText: '',
   backupCommentList: [
     {
       markTime: 1580433801310,
+      netCommentDisplay: "none",
+      netCommentText:"",
       defaultPerson: "Dolphin",
       headImg:"../src/img/head01.jpg",
       commentText: "Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
@@ -179,6 +191,8 @@ let store = {
     },
     {
       markTime: 1580433801310,
+      netCommentDisplay: "none",
+      netCommentText:"",
       defaultPerson: "Kana",
       headImg:"../src/img/head16.jpg",
       commentText: "Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
@@ -199,12 +213,14 @@ let store = {
         {
           markTime: 1580433801310,
           defaultPerson: "Lia",
+          headImg:"../src/img/head10.jpg",
           commentText: "Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
         },
       ]
     },
     {
       markTime: 1580433801310,
+      netCommentText:"",
       defaultPerson: "Jot",
       headImg:"../src/img/head12.jpg",
       commentText: "Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
@@ -232,6 +248,7 @@ let store = {
     },
     {
       markTime: 1580433801310,
+      netCommentText:"",
       defaultPerson: "Lia",
       headImg:"../src/img/head10.jpg",
       commentText: "Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM on January 31, 2020. Late assignments will not be accepted. Submit your assignment by providing your GitHub URL for this project.",
@@ -254,6 +271,7 @@ let store = {
     },
     {
       markTime: 1580432701310,
+      netCommentText:"",
       defaultPerson: "Kana",
       headImg:"../src/img/head16.jpg",
       commentText: "Create a user interface clone of either the Facebook, Twitter, or LinkedIn news feed. Your app does not need to look exactly like any of these apps. Use your own judgement. Download the attached PDF document for project details, requirements, and evaluation criteria. Project is due by 11:00 AM  your GitHub URL for this project.",

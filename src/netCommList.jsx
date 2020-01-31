@@ -10,9 +10,9 @@ class NetCommList extends Component{
           <textarea 
             placeholder="Enter your comment"
             style={styles.textAreaNet}
-            value={this.props.insideComment}  
+            value={this.props.commentList[index].netCommentText}  
             cols = "138" rows="19" 
-            onChange = {this.props.insideCommentChange}>
+            onChange = {()=>{this.props.insideCommentChange(index)}}>
           </textarea>
   
           <button 

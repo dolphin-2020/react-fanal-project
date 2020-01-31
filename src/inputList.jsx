@@ -1,6 +1,6 @@
 import React,{Component,Fragment} from 'react'
 import store from '../src/store.jsx'
-import NetCommList from '../src/netCommList.jsx'
+//import NetCommList from '../src/netCommList.jsx'
 import Header from '../src/header.jsx'
 import HeaderInput from '../src/headerInput.jsx'
 import CommentArea from '../src/commentArea.jsx'
@@ -32,6 +32,7 @@ export default class InputList extends Component{
     this.showPhoto=this.showPhoto.bind(this);
     this.chooseImg=this.chooseImg.bind(this);
     this.disappear=this.disappear.bind(this);
+    this.reply=this.reply.bind(this);
   }
 
   render(){
@@ -48,46 +49,54 @@ export default class InputList extends Component{
           chooseImg={this.chooseImg}
           disappear={this.disappear}
         />
-        <NetCommList
+        {/* <NetCommList
           netCommentDisplay={this.state.netCommentDisplay}
           insideComment={this.state.insideComment}
           insideCommentChange={this.insideCommentChange}
           hindNetComment={this.hindNetComment}
           netBtn={this.netBtn}
-       /> 
+       />  */}
 
-      <HeaderInput
-        valChange={this.valChange}
-        register={this.state.register}
-        addToList={this.addToList}
-        selectVal={this.selectVal}
-        commentChange={this.commentChange}
-        commentText={this.state.commentText}
-        addComment={this.addComment}
-        sortBy={this.sortBy}
-        sortingBy={this.state.sortingBy}
-        showHidingComment={this.showHidingComment}
-        nameList={this.state.nameList}
-        defaultPerson={this.state.defaultPerson}
-        showPhoto={this.showPhoto}
-      /> 
+        <HeaderInput
+          valChange={this.valChange}
+          register={this.state.register}
+          addToList={this.addToList}
+          selectVal={this.selectVal}
+          commentChange={this.commentChange}
+          commentText={this.state.commentText}
+          addComment={this.addComment}
+          sortBy={this.sortBy}
+          sortingBy={this.state.sortingBy}
+          showHidingComment={this.showHidingComment}
+          nameList={this.state.nameList}
+          defaultPerson={this.state.defaultPerson}
+          showPhoto={this.showPhoto}
+        /> 
 
-      <CommentArea
-        commentList={this.state.commentList}
-        timeFormat={this.timeFormat}
-        addThumb={this.addThumb}
-        addLove={this.addLove}
-        addSmile={this.addSmile}
-        addAngry={this.addAngry}
-        addSad={this.addSad}
-        showAllComment={this.showAllComment}
-        showNet={this.showNet}
-        sendNetComment={this.sendNetComment}
-        hidingComm={this.hidingComm}
-        Hiding={this.state.Hiding}
-        delComment={this.delComment}
-        netCommentText={this.state.netCommentText}
-        commentList={this.state.commentList}
+        <CommentArea
+          commentList={this.state.commentList}
+          timeFormat={this.timeFormat}
+          addThumb={this.addThumb}
+          addLove={this.addLove}
+          addSmile={this.addSmile}
+          addAngry={this.addAngry}
+          addSad={this.addSad}
+          showAllComment={this.showAllComment}
+          showNet={this.showNet}
+          sendNetComment={this.sendNetComment}
+          hidingComm={this.hidingComm}
+          Hiding={this.state.Hiding}
+          delComment={this.delComment}
+          netCommentText={this.state.netCommentText}
+          commentList={this.state.commentList}
+          insideComment={this.state.insideComment}//
+
+
+          //netCommentDisplay={this.state.netCommentDisplay}////////////////
+          insideComment={this.state.insideComment}
+          insideCommentChange={this.insideCommentChange}
+          hindNetComment={this.hindNetComment}
+          netBtn={this.netBtn}
         />
 
       </Fragment>
@@ -117,7 +126,7 @@ export default class InputList extends Component{
       )
     }
   }
-  //////////////////////////////////////////////////////////
+
   selectVal(e){
     let newNameList=[...this.state.nameList];
     let img="../src/img/defaultHeadImg.png";
@@ -148,6 +157,8 @@ export default class InputList extends Component{
       
       let person={
         markTime:new Date().getTime(),
+        netCommentDisplay: "none",
+        insideComment:"",
         defaultPerson:this.state.defaultPerson,
         headImg:this.state.defaultHeadImg,
         commentText:this.state.commentText,
@@ -221,51 +232,61 @@ export default class InputList extends Component{
     })
   }
 
-  insideCommentChange(e){
+  showNet(index){
+    let newCommentList=[...this.state.commentList];
+    newCommentList[index].netCommentDisplay="";
     this.setState({
-      insideComment:e.target.value,
-    })
-  }
-
-  showNet(){
-    this.setState({
-      netCommentDisplay:"",
+      commentList:[...newCommentList],
+      netCommentDisplay:"",////////////////
       darkBackground:"",
 
     })
   }
 
-  hindNetComment(){
+  hindNetComment(index){
+    let newCommentList=[...this.state.commentList];
+    newCommentList[index].netCommentDisplay="none";
     this.setState({
-      netCommentDisplay:"none",
+      //netCommentDisplay:"none",////////////////////
+      commentList:[...newCommentList],
       insideComment:"",
       netCommentText:'',
       darkBackground:"none",
     })
   }
-
-  netBtn(){
+////////////////////////////
+  insideCommentChange(e){
+    e.onfocus;
     this.setState({
-      netCommentText:this.state.insideComment,
-      netCommentDisplay:"none",
+      insideComment:e.target.value,
+    })
+  }
+
+  netBtn(index){
+    let newCommentList=[...this.state.commentList];
+    newCommentList[index].netCommentText=this.state.insideComment;
+    newCommentList[index].netCommentDisplay="none";
+    this.setState({
+      commentList:[...newCommentList],
       darkBackground:"none",
+      //insideComment:"",
     })
   }
 
   sendNetComment(index){
-    if(this.state.netCommentText===''){
+    if(this.state.commentList[index].netCommentText===''){
       alert("Are you kidding me?")
     }else{
       let newCommentList=[...this.state.commentList];
       newCommentList[index].offOn=""
       let markTime=new Date().getTime();
-      let person={markTime:markTime,defaultPerson:this.state.defaultPerson,headImg:this.state.defaultHeadImg,commentText:this.state.netCommentText,voteLove:0,voteThumb:0,voteSmile:0,voteAngry:0,voteSad:0}
+      let person={markTime:markTime,defaultPerson:this.state.defaultPerson,headImg:this.state.defaultHeadImg,commentText:this.state.commentList[index].netCommentText,voteLove:0,voteThumb:0,voteSmile:0,voteAngry:0,voteSad:0}
       newCommentList[index].anotherPersonComment=[person,...newCommentList[index].anotherPersonComment];
       this.setState({
         commentList:[...newCommentList],
         backupCommentList:[...newCommentList],
         insideComment:"",
-        netCommentText:"",
+        //netCommentText:"",
       })
     }
   }
@@ -389,4 +410,7 @@ export default class InputList extends Component{
     })
   }
 
+  reply(){
+    let person=this.state.defaultPerson;
+  }
 }

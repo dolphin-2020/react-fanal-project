@@ -12,11 +12,12 @@ class CommentArea extends Component{
         this.props.commentList.map((item,index)=>{
         return (
           <div 
-          key = {new Date().getTime()+index} 
+          key = {index} 
           style = {{fontSize:"14px",margin:"10px 0px",boxShadow:"2px 2px 4px 2px #eee, -2px 2px 2px 2px #eee ",display:this.props.commentList[index].display}}>
           <label style={{fontSize:"16px",color:"blue"}}><img src={item.headImg} style={{width:"25px"}}/> {item.defaultPerson}</label>
           <label style={{paddingLeft:"15px"}}>{this.props.timeFormat(item.markTime)}</label>
           <p style={{backgroundColor:"#eee",padding:"5px",fontSize:"18px"}}>{item.commentText}</p>
+          
           <div style={{width:"90%",backgroundColor:"#eee",margin:"auto",display:this.props.commentList[index].offOn}}>
           {
             this.props.commentList[index].anotherPersonComment.map((item,index)=>{
@@ -27,7 +28,7 @@ class CommentArea extends Component{
                 <label style={{paddingLeft:"10px"}}>{this.props.timeFormat(item.markTime)}</label>
                 
                 <p style={{backgroundColor:"#fff",fontSize:"18px"}}>{item.commentText}</p>
-                <button style={{width:"60px",height:"25px",backgroundColor:"#06f",borderRadius:"8px",color:"white"}} type="submit">Reply</button>
+                <button onClick={this.props.reply} style={styles.replyBtn} type="submit">Reply</button>
                 <label style={{float:"right",fontSize:"20px"}} type="submit">0</label>
                 <img style={{width:"30px",borderRadius:"50px",float:"right",paddingRight:"10px"}} src="../src/img/like.jpg"></img>
               </div>
@@ -69,9 +70,9 @@ class CommentArea extends Component{
           
           <button 
             style={styles.showNet}
-            onClick={this.props.showNet}
+            onClick={()=>{this.props.showNet(index)}}/////////////////
           >
-          Please Enter Your Comment
+          {this.props.commentList[index].netCommentText===""?"Please enter comment":this.props.commentList[index].netCommentText}
           </button>
         
           <img src="../src/img/send.png"
@@ -98,6 +99,42 @@ class CommentArea extends Component{
         </div>
 
         </div>
+
+        
+
+
+
+
+        <div 
+        style={{display:this.props.commentList[index].netCommentDisplay,width:"400px",position:"fixed",top:"50%",left:"50%", transform: "translate(-50%, -50%)",zIndex:"10"}}
+          >
+          <textarea 
+            placeholder="Enter your comment"
+            style={styles.textAreaNet}
+            value={this.props.insideComment}  
+            cols = "138" rows="19" 
+            onChange = {this.props.insideCommentChange}>
+          </textarea>
+  
+          <button 
+            style={styles.hindNetComment}
+            onClick={()=>{this.props.hindNetComment(index)}}
+          >Cancel
+          </button>
+
+          <button 
+            style={styles.netBtn}
+            onClick={()=>{this.props.netBtn(index)}}
+          >
+          OK
+        </button>
+      </div>
+
+
+
+
+
+
          
       </div>
           )

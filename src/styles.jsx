@@ -37,8 +37,8 @@ let styles = {
     width: "100px",
     height: "100px",
     borderRadius: "90px",
-    position:"absolute",
-    left:"100px",
+    position: "absolute",
+    left: "100px",
     border: "4px solid lightGray",
     marginLeft: "100px"
   },
@@ -77,12 +77,19 @@ let styles = {
     marginLeft: "50px",
     borderRadius: "5px"
   },
+  replyBtn: {
+    width: "60px",
+    height: "25px",
+    backgroundColor: "#06f",
+    borderRadius: "8px",
+    color: "white",
+  },
   anotherPersonComment: {
     fontSize: "14px",
     margin: "20px 20px",
     boxShadow: "2px 2px 4px 2px #eee, -2px 2px 2px 2px #eee ",
-    border:"1px solid gray",
-    padding:"10px"
+    border: "1px solid gray",
+    padding: "10px"
   },
   commVoteNum: {
     width: "20px",
