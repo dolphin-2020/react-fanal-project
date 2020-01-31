@@ -1,6 +1,5 @@
 import React,{Component,Fragment} from 'react'
 import store from '../src/store.jsx'
-//import NetCommList from '../src/netCommList.jsx'
 import Header from '../src/header.jsx'
 import HeaderInput from '../src/headerInput.jsx'
 import CommentArea from '../src/commentArea.jsx'
@@ -23,7 +22,6 @@ export default class InputList extends Component{
     this.showNet=this.showNet.bind(this);
     this.hindNetComment=this.hindNetComment.bind(this);
     this.netBtn=this.netBtn.bind(this);
-    this.sendNetComment=this.sendNetComment.bind(this);
     this.sortBy=this.sortBy.bind(this);
     this.hidingComm=this.hidingComm.bind(this);
     this.showHidingComment=this.showHidingComment.bind(this);
@@ -32,7 +30,9 @@ export default class InputList extends Component{
     this.showPhoto=this.showPhoto.bind(this);
     this.chooseImg=this.chooseImg.bind(this);
     this.disappear=this.disappear.bind(this);
-    this.reply=this.reply.bind(this);
+    this.like=this.like.bind(this);
+    this.sendNetComment=this.sendNetComment.bind(this);
+    
   }
 
   render(){
@@ -49,14 +49,7 @@ export default class InputList extends Component{
           chooseImg={this.chooseImg}
           disappear={this.disappear}
         />
-        {/* <NetCommList
-          netCommentDisplay={this.state.netCommentDisplay}
-          insideComment={this.state.insideComment}
-          insideCommentChange={this.insideCommentChange}
-          hindNetComment={this.hindNetComment}
-          netBtn={this.netBtn}
-       />  */}
-
+       
         <HeaderInput
           valChange={this.valChange}
           register={this.state.register}
@@ -82,21 +75,20 @@ export default class InputList extends Component{
           addAngry={this.addAngry}
           addSad={this.addSad}
           showAllComment={this.showAllComment}
-          showNet={this.showNet}
-          sendNetComment={this.sendNetComment}
+          showNet={this.showNet} 
           hidingComm={this.hidingComm}
           Hiding={this.state.Hiding}
           delComment={this.delComment}
           netCommentText={this.state.netCommentText}
           commentList={this.state.commentList}
           insideComment={this.state.insideComment}//
-
-
-          //netCommentDisplay={this.state.netCommentDisplay}////////////////
           insideComment={this.state.insideComment}
           insideCommentChange={this.insideCommentChange}
           hindNetComment={this.hindNetComment}
           netBtn={this.netBtn}
+          like={this.like}
+          sendNetComment={this.sendNetComment}
+
         />
 
       </Fragment>
@@ -158,7 +150,8 @@ export default class InputList extends Component{
       let person={
         markTime:new Date().getTime(),
         netCommentDisplay: "none",
-        insideComment:"",
+        //insideComment:"",
+        netCommentText:"",
         defaultPerson:this.state.defaultPerson,
         headImg:this.state.defaultHeadImg,
         commentText:this.state.commentText,
@@ -232,29 +225,29 @@ export default class InputList extends Component{
     })
   }
 
-  showNet(index){
+  showNet(index,item){
     let newCommentList=[...this.state.commentList];
     newCommentList[index].netCommentDisplay="";
     this.setState({
       commentList:[...newCommentList],
-      netCommentDisplay:"",////////////////
+      netCommentDisplay:"",
       darkBackground:"",
-
+      badGuy:item,
     })
   }
+
 
   hindNetComment(index){
     let newCommentList=[...this.state.commentList];
     newCommentList[index].netCommentDisplay="none";
     this.setState({
-      //netCommentDisplay:"none",////////////////////
       commentList:[...newCommentList],
       insideComment:"",
       netCommentText:'',
       darkBackground:"none",
     })
   }
-////////////////////////////
+
   insideCommentChange(e){
     e.onfocus;
     this.setState({
@@ -262,31 +255,40 @@ export default class InputList extends Component{
     })
   }
 
-  netBtn(index){
+  showNet(index,ele){
     let newCommentList=[...this.state.commentList];
-    newCommentList[index].netCommentText=this.state.insideComment;
-    newCommentList[index].netCommentDisplay="none";
+    newCommentList[index].netCommentDisplay="";
     this.setState({
       commentList:[...newCommentList],
-      darkBackground:"none",
-      //insideComment:"",
+      netCommentDisplay:"",////////////////
+      darkBackground:"",
+      badGuy:ele,
     })
   }
 
-  sendNetComment(index){
+  netBtn(index,name){
+console.log(name)
+    let newCommentList=[...this.state.commentList];
+    newCommentList[index].netCommentText=this.state.insideComment;
+    newCommentList[index].netCommentDisplay="none";
+    
+    this.setState({
+      commentList:[...newCommentList],
+      darkBackground:"none",
+    })
     if(this.state.commentList[index].netCommentText===''){
       alert("Are you kidding me?")
     }else{
       let newCommentList=[...this.state.commentList];
       newCommentList[index].offOn=""
       let markTime=new Date().getTime();
-      let person={markTime:markTime,defaultPerson:this.state.defaultPerson,headImg:this.state.defaultHeadImg,commentText:this.state.commentList[index].netCommentText,voteLove:0,voteThumb:0,voteSmile:0,voteAngry:0,voteSad:0}
+      let person={markTime:markTime,defaultPerson:this.state.defaultPerson+"  @"+this.state.badGuy,headImg:this.state.defaultHeadImg,commentText:this.state.commentList[index].netCommentText,voteLove:0,voteThumb:0,voteSmile:0,voteAngry:0,voteSad:0,like:0}
       newCommentList[index].anotherPersonComment=[person,...newCommentList[index].anotherPersonComment];
       this.setState({
         commentList:[...newCommentList],
         backupCommentList:[...newCommentList],
         insideComment:"",
-        //netCommentText:"",
+        badGuy:"",
       })
     }
   }
@@ -410,7 +412,16 @@ export default class InputList extends Component{
     })
   }
 
-  reply(){
-    let person=this.state.defaultPerson;
+  like(idx,index){
+    let newCommentList=[...this.state.commentList];
+    newCommentList[index].anotherPersonComment[idx].like+=1;
+    this.setState({
+      commentList:[...newCommentList],
+      backupCommentList:[...newCommentList],
+    })
+  }
+
+  sendNetComment(){
+    alert("Just for decoration. Next time may be add some function")
   }
 }

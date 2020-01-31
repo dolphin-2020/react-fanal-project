@@ -7,9 +7,11 @@ class CommentArea extends Component{
 
   render(){
     return(
+  
       <div style = {{width:"70%",margin:"auto"}}>
       {
         this.props.commentList.map((item,index)=>{
+          let i=index;
         return (
           <div 
           key = {index} 
@@ -20,20 +22,21 @@ class CommentArea extends Component{
           
           <div style={{width:"90%",backgroundColor:"#eee",margin:"auto",display:this.props.commentList[index].offOn}}>
           {
-            this.props.commentList[index].anotherPersonComment.map((item,index)=>{
-              return <div 
-                key = {new Date().getTime()+index} 
+            this.props.commentList[index].anotherPersonComment.map((ele,idx)=>{
+              return (
+              <div 
+                key = {idx} 
                 style = {styles.anotherPersonComment}>
-                <label style={{fontSize:"16px",color:"blue"}}><img src={item.headImg} style={{width:"25px"}}/> {item.defaultPerson}</label>
-                <label style={{paddingLeft:"10px"}}>{this.props.timeFormat(item.markTime)}</label>
-                
-                <p style={{backgroundColor:"#fff",fontSize:"18px"}}>{item.commentText}</p>
-                <button onClick={this.props.reply} style={styles.replyBtn} type="submit">Reply</button>
-                <label style={{float:"right",fontSize:"20px"}} type="submit">0</label>
-                <img style={{width:"30px",borderRadius:"50px",float:"right",paddingRight:"10px"}} src="../src/img/like.jpg"></img>
+                <label style={{fontSize:"16px",color:"blue"}}><img src={ele.headImg} style={{width:"25px"}}/> {ele.defaultPerson}</label>
+                <label style={{paddingLeft:"10px"}}>{this.props.timeFormat(ele.markTime)}</label>
+                <p style={styles.insideComm}>{ele.commentText}</p>
+                <button onClick={()=>{this.props.showNet(i,ele.defaultPerson)}} style={styles.replyBtn} type="submit">Reply</button>
+                <label style={styles.insideLab} type="submit">{ele.like}</label>
+                <img onClick={()=>{this.props.like(idx,index)}} style={styles.like} src="../src/img/like.jpg"></img>
               </div>
+             )
             })
-          }
+           }
           </div>
 
           <div>
@@ -70,15 +73,15 @@ class CommentArea extends Component{
           
           <button 
             style={styles.showNet}
-            onClick={()=>{this.props.showNet(index)}}/////////////////
+            onClick={()=>{this.props.showNet(index,item.defaultPerson)}}/////////////////
           >
-          {this.props.commentList[index].netCommentText===""?"Please enter comment":this.props.commentList[index].netCommentText}
+          Please enter comment
           </button>
-        
+ 
           <img src="../src/img/send.png"
           onClick = {()=>{this.props.sendNetComment(index)}} 
           style = {styles.send}               
-          />
+          />  
 
         <button onClick={()=>{this.props.hidingComm(index)}} 
           style={styles.hidingComm}>
@@ -100,11 +103,6 @@ class CommentArea extends Component{
 
         </div>
 
-        
-
-
-
-
         <div 
         style={{display:this.props.commentList[index].netCommentDisplay,width:"400px",position:"fixed",top:"50%",left:"50%", transform: "translate(-50%, -50%)",zIndex:"10"}}
           >
@@ -124,18 +122,12 @@ class CommentArea extends Component{
 
           <button 
             style={styles.netBtn}
-            onClick={()=>{this.props.netBtn(index)}}
+            onClick={()=>{this.props.netBtn(index,item.defaultPerson)}}
           >
           OK
         </button>
       </div>
 
-
-
-
-
-
-         
       </div>
           )
       })}

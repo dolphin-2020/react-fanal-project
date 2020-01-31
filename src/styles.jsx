@@ -110,7 +110,7 @@ let styles = {
     marginLeft: "20px",
     borderRadius: "20px",
     height: "30px",
-    border: "1px solid lightgray",
+    border: "1px solid lightGray",
     width: "200px",
     position: "relative",
     top: "-10px"
@@ -149,5 +149,21 @@ let styles = {
     height: "36px",
     marginLeft: "50px"
   },
+  replySend: {
+    width: "200px",
+    height: "30px",
+    float: "right",
+    backgroundColor: "#06f",
+    color: "white",
+    position: "fixed",
+    top: "71.2%",
+    left: "54.7%",
+    transform: "translate(-30%, -30%)",
+    zIndex: "100",
+    display:"",
+  },
+  like:{width:"30px",borderRadius:"50px",float:"right",paddingRight:"10px"},
+  insideLab:{float:"right",fontSize:"20px",color:"red"},
+  insideComm:{backgroundColor:"#fff",fontSize:"18px"},
 }
 export default styles;
