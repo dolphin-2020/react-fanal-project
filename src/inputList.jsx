@@ -252,7 +252,7 @@ export default class InputList extends Component{
     })
   }
 
-  sendNetComment(index){////////////////////////////////
+  sendNetComment(index){
     if(this.state.netCommentText===''){
       alert("Are you kidding me?")
     }else{

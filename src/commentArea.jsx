@@ -14,23 +14,23 @@ class CommentArea extends Component{
           <div 
           key = {new Date().getTime()+index} 
           style = {{fontSize:"14px",margin:"10px 0px",boxShadow:"2px 2px 4px 2px #eee, -2px 2px 2px 2px #eee ",display:this.props.commentList[index].display}}>
-          <p style={{backgroundColor:"lightgray"}}>{this.props.timeFormat(item.markTime)}</p>
-          <p style={{fontSize:"16px",color:"blue"}}><img src={item.headImg} style={{width:"25px"}}/> {item.defaultPerson}</p>
-          
-          <p style={{backgroundColor:"#eee"}}>{item.commentText}</p>
-          
-          <div style={{width:"90%",backgroundColor:"lightgray",margin:"auto",display:this.props.commentList[index].offOn}}>
+          <label style={{fontSize:"16px",color:"blue"}}><img src={item.headImg} style={{width:"25px"}}/> {item.defaultPerson}</label>
+          <label style={{paddingLeft:"15px"}}>{this.props.timeFormat(item.markTime)}</label>
+          <p style={{backgroundColor:"#eee",padding:"5px",fontSize:"18px"}}>{item.commentText}</p>
+          <div style={{width:"90%",backgroundColor:"#eee",margin:"auto",display:this.props.commentList[index].offOn}}>
           {
             this.props.commentList[index].anotherPersonComment.map((item,index)=>{
               return <div 
                 key = {new Date().getTime()+index} 
                 style = {styles.anotherPersonComment}>
+                <label style={{fontSize:"16px",color:"blue"}}><img src={item.headImg} style={{width:"25px"}}/> {item.defaultPerson}</label>
+                <label style={{paddingLeft:"10px"}}>{this.props.timeFormat(item.markTime)}</label>
                 
-                <p style={{backgroundColor:"lightgray"}}>{this.props.timeFormat(item.markTime)}</p>
-                <p style={{fontSize:"16px",color:"blue"}}><img src={item.headImg} style={{width:"25px"}}/> {item.defaultPerson}</p>
-                
-                <p style={{backgroundColor:"#eee"}}>{item.commentText}</p>
-                </div>
+                <p style={{backgroundColor:"#fff",fontSize:"18px"}}>{item.commentText}</p>
+                <button style={{width:"60px",height:"25px",backgroundColor:"#06f",borderRadius:"8px",color:"white"}} type="submit">Reply</button>
+                <label style={{float:"right",fontSize:"20px"}} type="submit">0</label>
+                <img style={{width:"30px",borderRadius:"50px",float:"right",paddingRight:"10px"}} src="../src/img/like.jpg"></img>
+              </div>
             })
           }
           </div>
